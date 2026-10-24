@@ -1,0 +1,3307 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#155c50">
+  <title>鶯歌農會115年度觀摩活動・整合行程導覽 V7 (多語音無障礙・即時高亮同步版)</title>
+  <style>
+    :root {
+      --green: #155c50;
+      --green-dark: #0f433a;
+      --green-light: #e9f5f0;
+      --bg: #f4f7f8;
+      --card: #ffffff;
+      --line: #dbe4e7;
+      --text: #213441;
+      --muted: #596d78;
+      --accent: #d97706;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.6;
+    }
+    button, input, select { font: inherit; }
+    button, .btn {
+      min-height: 48px;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    button:hover, .btn:hover { background: var(--green-light); border-color: #bcd9cd; }
+    button.active { background: var(--green); color: #fff; border-color: var(--green); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    :focus-visible { outline: 3px solid #e9a600; outline-offset: 2px; }
+
+    /* ============================================================
+       🌟 朗讀即時高亮與同步滾動樣式 (Karaoke Highlighting & Focus)
+       ============================================================ */
+    .reading-highlight-card {
+      outline: 3.5px solid #10b981 !important;
+      background: #eefbf4 !important;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4) !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      transform: scale(1.015);
+      z-index: 100;
+      position: relative;
+    }
+    .reading-highlight-row {
+      background: #fef08a !important;
+      outline: 3px solid #eab308 !important;
+      font-weight: 700;
+      transition: background 0.3s ease;
+    }
+    body.outdoor .reading-highlight-card {
+      outline: 5px solid #000000 !important;
+      background: #fff5c0 !important;
+      color: #000000 !important;
+    }
+
+    /* ☀️ 戶外防眩光高對比模式 (Senior Outdoor High Contrast) */
+    body.outdoor {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --text: #000000;
+      --line: #000000;
+      --muted: #111111;
+      --green: #004d40;
+      --green-dark: #002219;
+      --green-light: #fff5c0;
+      --accent: #b45309;
+      font-weight: 600;
+    }
+    body.outdoor .card, body.outdoor table, body.outdoor td, body.outdoor th, body.outdoor button, body.outdoor .btn, body.outdoor .check-card, body.outdoor .voice-bar {
+      border: 2px solid #000000 !important;
+      color: #000000 !important;
+    }
+    body.outdoor strong, body.outdoor b, body.outdoor h1, body.outdoor h2, body.outdoor h3 {
+      color: #000000 !important;
+      font-weight: 800;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--green-dark), var(--green) 60%, #207566);
+      color: white;
+      padding: 16px max(16px, calc((100vw - 1320px) / 2));
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-titles { flex: 1 1 300px; }
+    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .header-btn {
+      background: rgba(255,255,255,0.18);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.4);
+      min-height: 42px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13.5px;
+    }
+    .header-btn:hover { background: rgba(255,255,255,0.3); border-color: #ffffff; }
+    .header-btn.highlight {
+      background: #f59e0b;
+      border-color: #fbbf24;
+      color: #000;
+      font-weight: 700;
+    }
+    .header-btn.highlight:hover { background: #d97706; color: #fff; }
+
+    h1 { font-size: clamp(20px, 3vw, 28px); margin: 0; font-weight: 800; letter-spacing: -0.02em; }
+    h2 { font-size: 20px; margin: 0 0 12px; font-weight: 700; color: var(--green-dark); }
+    h3 { font-size: 17px; margin: 0 0 6px; font-weight: 700; }
+    p { margin: 6px 0 12px; }
+    .muted, small { color: var(--muted); }
+    header small { color: #dcefe7; font-size: 14px; display: block; margin-top: 4px; }
+
+    nav.top {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      padding: 8px 16px;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      z-index: 1200;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    nav button { white-space: nowrap; border-radius: 999px; }
+
+    main { max-width: 1350px; padding: 16px; margin: auto; }
+    .card {
+      background: var(--card);
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      transition: all 0.25s ease;
+    }
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .bar label { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; }
+    select, input:not([type=checkbox]):not([type=range]) {
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 8px 12px;
+      max-width: 100%;
+      background: #fff;
+    }
+    input[type=search] { width: 100%; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr);
+      gap: 16px;
+    }
+    .mapHost {
+      position: relative;
+      min-width: 0;
+      height: clamp(380px, 68vh, 740px);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #e5ece9;
+    }
+    .canvas { height: 100%; width: 100%; }
+    .mapHost iframe { border: 0; height: 100%; width: 100%; }
+    .mapMessage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      background: #f5faf7;
+      z-index: 600;
+    }
+    .fullscreen-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 500;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+
+    .note {
+      background: #fff8e8;
+      border-left: 4px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      margin: 10px 0;
+      color: #78350f;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fafcfb;
+      transition: all 0.25s ease;
+    }
+    .stat strong { display: block; font-size: 22px; color: var(--green); margin-bottom: 2px; }
+
+    .daycard {
+      border-left: 5px solid var(--c);
+      padding: 14px;
+      background: #f7fafb;
+      border-radius: 10px;
+      margin: 10px 0;
+      border: 1px solid var(--line);
+      border-left-width: 5px;
+      transition: all 0.25s ease;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13.5px;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+    .legend i {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    .stop {
+      width: 100%;
+      justify-content: flex-start;
+      text-align: left;
+      margin: 6px 0;
+      gap: 10px;
+      border-radius: 10px;
+      min-height: 52px;
+      transition: all 0.25s ease;
+    }
+    .stop.selected {
+      outline: 2px solid var(--green);
+      background: #eaf5ef;
+      border-color: var(--green);
+    }
+    .num {
+      min-width: 34px;
+      height: 34px;
+      color: white;
+      background: var(--c);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .stop small { display: block; color: var(--muted); font-size: 12px; }
+    .list { max-height: 44vh; overflow-y: auto; padding-right: 4px; }
+    .info { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 14px; }
+    .badge {
+      display: inline-block;
+      background: #eaf0f4;
+      color: #334e5e;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .amenity-tag {
+      display: inline-flex;
+      align-items: center;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      padding: 2px 7px;
+      font-size: 12px;
+      margin: 2px;
+    }
+
+    .timeline article {
+      border-left: 4px solid var(--c);
+      padding: 12px;
+      margin: 10px 0;
+      background: #f7fafb;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
+    .timelineGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .tw { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    td, th { padding: 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { background: #edf4f1; color: var(--green-dark); font-weight: 700; }
+    tr[data-stop] { cursor: pointer; transition: all 0.2s ease; }
+    tr[data-stop]:hover { background: #f2f8f5; }
+    tr.selected { background: #eaf5ef !important; }
+
+    .settings label { display: block; margin: 12px 0; font-size: 14.5px; }
+    .settings input[type=text], .settings input[type=password] { width: 100%; }
+    .settings details { margin: 14px 0; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+
+    /* Map Marker & Pin Styles */
+    .mk { cursor: pointer; }
+    .pin {
+      height: 38px;
+      width: 38px;
+      display: grid;
+      place-items: center;
+      background: var(--c);
+      border: 2.5px solid white;
+      border-radius: 50%;
+      color: white;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      position: relative;
+      font-weight: 700;
+      font-size: 12px;
+      transition: transform 0.15s ease;
+    }
+    .pin.square { border-radius: 8px; }
+    .pin.drop { border-radius: 50% 50% 50% 4px; transform: rotate(-45deg); }
+    .pin.drop * { transform: rotate(45deg); }
+    .pin.flag { border-radius: 4px 12px 12px 4px; transform: scale(1.05); }
+    .pin em { font-style: normal; font-size: 16px; }
+    .pin b {
+      position: absolute;
+      right: -7px;
+      top: -7px;
+      background: var(--d);
+      border: 2px solid white;
+      color: white;
+      font: 700 10px/15px system-ui;
+      min-width: 18px;
+      border-radius: 10px;
+      padding: 0 2px;
+      text-align: center;
+    }
+    .mk:hover .pin { transform: scale(1.15); }
+    .mk.sel .pin { outline: 3px solid #e7ab00; transform: scale(1.18); z-index: 10; }
+    .pop {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      padding: 12px;
+      max-width: 290px;
+      min-width: 230px;
+      font-size: 13.5px;
+    }
+    .sheetTitle { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .collapsed .list { display: none; }
+    .bottom { display: none; }
+
+    /* Map Button Group Styling for Stop Table */
+    .map-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      min-height: 32px;
+      line-height: 1;
+    }
+    .map-btn:hover {
+      background: var(--green-light);
+      border-color: #bcd9cd;
+      color: var(--green-dark);
+    }
+    .map-btn.primary {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #15803d;
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       🎒 個人行前行李檢查清單專用樣式 (SVG + 卡片化 + 進度條)
+       ============================================================ */
+    .checklist-progress-container {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 12px 0 18px;
+      border: 1px solid var(--line);
+    }
+    .checklist-progress-bar {
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px 0 6px;
+    }
+    .checklist-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #059669);
+      width: 0%;
+      transition: width 0.35s ease-out;
+      border-radius: 999px;
+    }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .check-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      user-select: none;
+    }
+    .check-card:hover {
+      border-color: var(--green);
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+    .check-card.checked {
+      background: #f0fdf4;
+      border-color: #10b981;
+      box-shadow: 0 1px 3px rgba(16, 185, 129, 0.15);
+    }
+    .check-card.checked .check-title {
+      text-decoration: line-through;
+      color: #475569;
+    }
+    .check-svg-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #e6f4ee;
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      transition: all 0.2s;
+    }
+    .check-card.checked .check-svg-icon {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .check-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .check-category {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0d9488;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      display: block;
+    }
+    .check-title {
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--text);
+      line-height: 1.35;
+      display: block;
+    }
+    .check-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.35;
+      display: block;
+    }
+    .check-box-visual {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 10px;
+      transition: all 0.15s ease;
+      background: #fff;
+    }
+    .check-card.checked .check-box-visual {
+      background: #10b981;
+      border-color: #10b981;
+      color: #fff;
+    }
+    .check-box-visual svg {
+      display: none;
+    }
+    .check-card.checked .check-box-visual svg {
+      display: block;
+    }
+
+    /* ============================================================
+       🔊 常駐語音朗讀播放控制器 (Floating Voice Player & Subtitle Bar)
+       ============================================================ */
+    .voice-bar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 3500;
+      background: #133e36;
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 10px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      max-width: min(540px, 94vw);
+    }
+    .voice-bar.hidden {
+      display: none;
+    }
+    .voice-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+    }
+    .voice-info {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #6ee7b7;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 260px;
+    }
+    .voice-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .voice-bar button {
+      min-height: 36px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 12.5px;
+    }
+    .voice-bar button:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .voice-wave {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      height: 16px;
+    }
+    .voice-wave span {
+      width: 3px;
+      height: 100%;
+      background: #10b981;
+      border-radius: 3px;
+      animation: wave 1s infinite ease-in-out;
+    }
+    .voice-wave span:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+    .voice-wave span:nth-child(3) { animation-delay: 0.4s; height: 80%; }
+    @keyframes wave {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
+    }
+
+    /* 即時字幕歌詞條 (Live Subtitle / Karaoke Ticker) */
+    .voice-subtitle-box {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #fef08a;
+      max-height: 60px;
+      overflow-y: auto;
+      border-left: 3px solid #facc15;
+    }
+
+    /* 語音設定專屬視窗 (Voice Settings Modal) */
+    #voiceModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      z-index: 5500;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+    #voiceModal[hidden] { display: none; }
+    .voiceBox {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .voiceBox h3 { margin-top: 0; color: var(--green-dark); }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 10px 0;
+    }
+    .slider-row input[type=range] {
+      flex: 1;
+      accent-color: var(--green);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 24px 16px;
+      border-top: 1px solid var(--line);
+      margin-top: 24px;
+      background: #fff;
+    }
+    .toast {
+      position: fixed;
+      bottom: 85px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #173c35;
+      color: #fff;
+      border-radius: 12px;
+      padding: 10px 18px;
+      z-index: 4000;
+      max-width: 90%;
+      display: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      font-size: 14px;
+    }
+    #more {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 4500;
+      display: flex;
+      align-items: flex-end;
+    }
+    #more[hidden] { display: none; }
+    #more > div {
+      width: 100%;
+      background: white;
+      border-radius: 20px 20px 0 0;
+      padding: 20px 16px calc(85px + env(safe-area-inset-bottom));
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    #more button { display: flex; width: 100%; margin: 8px 0; justify-content: flex-start; }
+
+    /* Custom Confirm Modal */
+    #confirmModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(2px);
+      z-index: 5000;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+    #confirmModal[hidden] { display: none; }
+    .confirmBox {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+    .confirmBtns { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+
+    /* 手機橫向沉浸式排版 (<480px height landscape) */
+    @media (orientation: landscape) and (max-height: 480px) {
+      header, footer, nav.top, nav.bottom {
+        display: none !important;
+      }
+      body { padding-bottom: 0 !important; }
+      main { padding: 4px; max-width: 100vw; }
+      .grid {
+        display: grid !important;
+        grid-template-columns: minmax(290px, 360px) 1fr !important;
+        height: 98vh;
+        gap: 6px !important;
+      }
+      .mapHost {
+        height: 100% !important;
+        border-radius: 10px !important;
+      }
+      aside {
+        height: 98vh;
+        overflow-y: auto;
+        padding-right: 4px;
+      }
+      .card { padding: 10px; margin-bottom: 6px; }
+      .list { max-height: 60vh !important; }
+      .voice-bar {
+        bottom: 8px;
+        right: 8px;
+        padding: 6px 12px;
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 950px) {
+      .timelineGrid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: minmax(0, 1.2fr) minmax(270px, 1fr); }
+    }
+    @media (max-width: 720px) {
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+      nav.top { display: none; }
+      main { padding: 10px; }
+      .grid { display: flex; flex-direction: column; }
+      .card { padding: 14px; }
+      .mapHost { height: 50vh; min-height: 320px; }
+      .checklist-grid { grid-template-columns: 1fr; }
+      .voice-bar {
+        bottom: calc(78px + env(safe-area-inset-bottom));
+        right: 12px;
+        left: 12px;
+        max-width: none;
+      }
+      .bottom {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 3000;
+        padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+        border-top: 1px solid var(--line);
+        gap: 2px;
+      }
+      .bottom button {
+        flex: 1;
+        min-width: 0;
+        border: 0;
+        font-size: 11px;
+        padding: 6px 1px;
+        flex-direction: column;
+        line-height: 1.3;
+        background: transparent;
+      }
+      .bottom button.active { background: #eaf5ef; color: var(--green); }
+      .bottom span { font-size: 20px; display: block; margin-bottom: 2px; }
+      .stats { gap: 8px; }
+      .stat { padding: 10px; font-size: 13px; }
+      .stat strong { font-size: 18px; }
+      .list { max-height: 35vh; }
+      .tw table thead { display: none; }
+      .tw tr {
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        margin: 8px 0;
+        padding: 10px;
+      }
+      .tw td { display: block; border: 0; padding: 4px 0; }
+      .tw td:before { content: attr(data-label) '：'; color: var(--muted); font-weight: 600; }
+      header { padding: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; }
+    }
+
+    /* A4 紙本列印專用樣式 (@media print) */
+    @media print {
+      nav, header .header-actions, .mapbar, .mapHost, .bar, .map-btn-group, footer, #more, #confirmModal, #voiceModal, .voice-bar, .toast, .checklist-progress-container, #addCustomItemBox {
+        display: none !important;
+      }
+      body { background: #fff !important; color: #000 !important; font-size: 12pt; }
+      .card { border: 1px solid #333 !important; box-shadow: none !important; break-inside: avoid; }
+      table { width: 100% !important; border: 1px solid #000 !important; }
+      th, td { border: 1px solid #000 !important; padding: 6px !important; color: #000 !important; }
+      .print-qr { display: inline-block !important; width: 50px; height: 50px; }
+    }
+    .print-qr { display: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-titles">
+      <h1>🚌 鶯歌區農會・三天兩夜觀摩活動</h1>
+      <small>115年度會員區域外觀摩活動 ｜ 嘉義・台南見學巡禮 ｜ 即時高亮語音導覽 V7</small>
+    </div>
+    <div class="header-actions">
+      <!-- 每一頁都可以點擊的「朗讀本頁」快捷鈕 -->
+      <button id="readCurrentPageBtn" class="header-btn highlight" title="為您逐項高亮朗讀本頁重點內容">🔊 朗讀本頁</button>
+      <button id="openVoiceModalBtn" class="header-btn" title="調整朗讀語言、男女聲、音調、語速與公開 TTS API">🗣️ 語音設定</button>
+      <button id="toggleOutdoor" class="header-btn" title="切換戶外大字高反差顯示">☀️ 戶外強光</button>
+      <button class="header-btn" onclick="window.print()" title="列印 A4 紙本備份">🖨️ 列印行程</button>
+    </div>
+  </header>
+
+  <nav class="top" aria-label="主選單"></nav>
+
+  <main>
+    <!-- TAB 1: OVERVIEW (全貌) -->
+    <section id="overview">
+      <div class="card" id="cardOverviewIntro">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+          <h2>台灣巡禮・行程全貌</h2>
+          <button class="btn read-section-btn" data-read="overview_intro" data-target="#cardOverviewIntro" style="min-height:36px;font-size:12.5px">🔊 朗讀全貌簡介</button>
+        </div>
+        <p>鶯歌清晨南下嘉義與台南，深度探訪農業生態與老街文化，第三日經北港朝天宮返回鶯歌。三天路線以不同顏色標示。</p>
+        <div class="stats">
+          <div class="stat" id="stat1"><strong>3天2夜</strong>觀摩與文創生態行程</div>
+          <div class="stat" id="stat2"><strong>14處據點</strong>具名地點（午餐另行指引）</div>
+          <div class="stat" id="stat3"><strong>2梯次出發</strong>第1梯 10/27–29 ｜ 第2梯 11/2–4</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="mapbar"></div>
+        <div class="days bar"></div>
+        <div class="bar">
+          <button data-fit="overview">⌖ 所選全程</button>
+          <button id="island">🏝 台灣全島</button>
+          <button data-fullscreen="ovMap">⛶ 地圖全螢幕</button>
+          <label><input class="routeToggle" type="checkbox" checked> 顯示順序連線</label>
+        </div>
+        <div class="grid">
+          <div>
+            <div class="mapHost" id="ovMap"></div>
+            <div class="legend"></div>
+            <p class="note">路線標示為景點巡訪順序示意，非即時道路導航路徑。手機操作地圖時可使用雙指縮放平移，避免誤觸捲頁。</p>
+          </div>
+          <aside>
+            <div id="routeCards"></div>
+            <div class="info" id="ovInfo" aria-live="polite"></div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="card" id="cardTimelineOverview">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+          <h2 style="margin:0">三天路線時間軸</h2>
+          <button class="btn read-section-btn" data-read="all_timeline" data-target="#cardTimelineOverview" style="min-height:36px;font-size:12.5px">🔊 朗讀三天時序</button>
+        </div>
+        <div id="allTimeline" class="timelineGrid"></div>
+      </div>
+    </section>
+
+    <!-- TAB 2: CALENDAR & DAY MAP (每日行程) -->
+    <section id="cal" hidden>
+      <div class="card" id="cardCalDay">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+          <h2>行事曆與每日地圖</h2>
+          <button class="btn read-section-btn" data-read="cal_day" data-target="#cardCalDay" style="min-height:36px;font-size:12.5px">🔊 朗讀當日行程</button>
+        </div>
+        <div class="bar">
+          <label>所屬梯次：
+            <select id="batch">
+              <option value="0">第 1 梯次 10/27 (二) ～ 10/29 (四)</option>
+              <option value="1">第 2 梯次 11/2 (一) ～ 11/4 (三)</option>
+            </select>
+          </label>
+        </div>
+        <div class="days bar"></div>
+        <div class="mapbar"></div>
+        <div class="grid">
+          <div>
+            <div class="mapHost" id="calMap"></div>
+            <div class="bar" style="margin-top:10px">
+              <button data-step="-1">◀ 上一站</button>
+              <button data-step="1">下一站 ▶</button>
+              <button data-fit="cal">⌖ 視角置中</button>
+              <button data-fullscreen="calMap">⛶ 全螢幕</button>
+            </div>
+          </div>
+          <aside>
+            <div id="dayTimeline" class="timeline list"></div>
+            <div id="calInfo" class="info" aria-live="polite"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: MAP INTERACTION (地圖互動) -->
+    <section id="mapx" hidden>
+      <div class="card" id="cardMapx">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+          <h2>地圖與地點互動查詢</h2>
+          <button class="btn read-section-btn" data-read="mapx_summary" data-target="#cardMapx" style="min-height:36px;font-size:12.5px">🔊 朗讀篩選結果</button>
+        </div>
+        <div class="mapbar"></div>
+        <div class="days bar"></div>
+        <div class="bar">
+          <label>性質篩選：
+            <select id="type">
+              <option value="">全部類型</option>
+            </select>
+          </label>
+          <button data-fit="mapx">⌖ 顯示範圍</button>
+          <button id="locate">📍 定位我的位置</button>
+          <button data-fullscreen="mxMap">⛶ 全螢幕</button>
+        </div>
+        <div class="grid">
+          <div class="mapHost" id="mxMap"></div>
+          <aside id="listPanel">
+            <div class="sheetTitle">
+              <h3 id="count">地點清單</h3>
+              <button id="fold" aria-controls="stopList" aria-expanded="true">收合清單</button>
+            </div>
+            <input id="search" type="search" placeholder="搜尋地點、地址、公廁或電話..." aria-label="搜尋地點">
+            <div id="stopList" class="list"></div>
+            <div id="mxInfo" class="info" aria-live="polite"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: TABLE & EXPORTS (資料表) -->
+    <section id="table" hidden>
+      <div class="card" id="cardTable">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+          <h2>地點、地址與開放地圖表</h2>
+          <button class="btn read-section-btn" data-read="table_summary" data-target="#cardTable" style="min-height:36px;font-size:12.5px">🔊 朗讀總表摘要</button>
+        </div>
+        <div class="days bar"></div>
+        <p class="muted">各據點均提供多種開放與主流地圖一鍵直達：Google 地圖、Google 導航、OpenStreetMap (OSM)、臺灣通用電子地圖 (NLSC)、Apple 地圖、Bing 地圖及手機原生導航協定 (Geo URI)。點選地點列亦可連動內部多引擎地圖。</p>
+        <div class="tw">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width:90px">天數/站序</th>
+                <th style="min-width:130px">地點名稱</th>
+                <th style="min-width:180px">地址</th>
+                <th style="min-width:130px">連絡電話</th>
+                <th style="min-width:140px">民生公廁與無障礙</th>
+                <th style="min-width:320px">開放地圖與導航按鈕</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <div class="bar" style="margin-top:14px">
+          <button id="csv">📥 下載 CSV 表格</button>
+          <button id="ics">📅 匯入手機行事曆 (.ics)</button>
+          <button onclick="window.print()">🖨️ 列印本頁紙本</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: GUIDE & FEES (行前與費用) -->
+    <section id="guide" hidden>
+      <div class="card" id="cardGuideRules">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+          <h2>報名與重要行前須知</h2>
+          <button class="btn read-section-btn" data-read="guide_rules" data-target="#cardGuideRules" style="min-height:36px;font-size:12.5px">🔊 朗讀行前規則</button>
+        </div>
+        <p><strong>主辦單位：</strong>新北市鶯歌區農會（新北市鶯歌區建國路66號7樓大禮堂）</p>
+        <p><strong>專線洽詢：</strong><a class="btn" href="tel:0226706262,822">📞 (02) 2670-6262 分機 822</a></p>
+        <p><strong>報名受理：</strong>民國115年 10/7 (三) ～ 10/8 (四)，每日 08:30 ～ 16:00；一律現場親洽報名，每梯次限額 180 名，額滿為止。</p>
+        <p><strong>出發時間：</strong>出發日早上 06:00 準時發車（逾時不候），各里集合乘車地點請依農會通知為準。</p>
+        <div class="note">
+          <strong>重要權益事項：</strong>
+          <ul style="margin:4px 0 0;padding-left:20px">
+            <li><strong>身分核驗：</strong>出發當日核對國民身分證，嚴禁冒名頂替；經查證冒名者立即取消資格且不予退費。</li>
+            <li><strong>取消退費：</strong>出發 10 日前持繳費收據、存摺及原留印鑑辦理，退款於活動全部結束後撥付；出發前 10 日內依規定扣減。</li>
+            <li><strong>高齡保險：</strong>依現行保險法規，85歲以上長輩團體意外險無法承保，請家屬自行斟酌加保旅平險。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" id="cardGuideFee">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+          <h2>報名費用即時試算</h2>
+          <button class="btn read-section-btn" data-read="guide_fee" data-target="#cardGuideFee" style="min-height:36px;font-size:12.5px">🔊 朗讀費用結果</button>
+        </div>
+        <div class="bar">
+          <label>會員本人（$3,000/人）：
+            <input id="nm" type="number" value="1" min="0" max="180" style="width:80px">
+          </label>
+          <label>隨行家屬（$7,000/人）：
+            <input id="nf" type="number" value="1" min="0" max="180" style="width:80px">
+          </label>
+        </div>
+        <h3 id="total" style="color:var(--accent);font-size:22px;margin:8px 0" aria-live="polite"></h3>
+        <svg id="costChart" viewBox="0 0 600 140" style="width:100%;max-width:650px" aria-label="費用結構對比"></svg>
+        <p class="muted" style="font-size:13px">試算金額僅供參考；實際應繳金額以臨櫃收費收據為準。</p>
+      </div>
+
+      <!-- 個人行前行李檢查清單 (含 SVG 符號與即時進度) -->
+      <div class="card" id="cardChecklist">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <h2 style="margin:0">🎒 個人隨身行前行李檢查清單</h2>
+          <div style="display:flex;gap:6px">
+            <button id="readChecklist" class="btn" style="min-height:36px;padding:4px 12px;font-size:12.5px">🔊 朗讀清單</button>
+            <button id="resetChecklist" class="btn" style="min-height:36px;padding:4px 12px;font-size:12.5px;color:#b91c1c">↺ 重設勾選</button>
+          </div>
+        </div>
+        <p class="muted" style="font-size:13.5px;margin:6px 0 10px">出發前請點擊卡片確認準備進度。系統會自動記憶於此手機／電腦中，出發當天不怕遺漏重要證件與藥品：</p>
+        
+        <!-- 即時完成度進度條 -->
+        <div class="checklist-progress-container">
+          <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700">
+            <span>📋 裝備準備進度</span>
+            <span id="checkStats">已準備 0 / 10 項 (0%)</span>
+          </div>
+          <div class="checklist-progress-bar">
+            <div id="checkFill" class="checklist-progress-fill"></div>
+          </div>
+          <small id="checkEncourage" class="muted">出發前請記得逐一核對，放進行李袋中更安心！</small>
+        </div>
+
+        <!-- 卡片式清單主網格 -->
+        <div id="checklistGrid" class="checklist-grid" role="group" aria-label="隨身行李準備清單"></div>
+
+        <!-- 自訂個人隨身物品欄位 -->
+        <div id="addCustomItemBox" class="bar" style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)">
+          <input id="customItemInput" type="text" placeholder="自行補充隨身物品（例如：血壓降糖藥、老花眼鏡...）" style="flex:1;min-width:240px">
+          <button id="addCustomItemBtn" class="btn" style="background:#eaf5ef;color:var(--green-dark)">＋ 新增個人物品</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>報名表填寫欄位指南</h2>
+        <p>前往本會 7 樓辦理時，請備妥：會員姓名、身分證字號、出生年月日、住址、住宅電話、行動電話、參加梯次、房間別（2人房／其他）、同房者姓名、用餐葷素習慣（全素／早齋）及緊急聯絡人資訊。</p>
+      </div>
+    </section>
+
+    <!-- TAB 6: SETTINGS (設定與校核) -->
+    <section id="settings" hidden>
+      <div class="card settings" id="cardSettings">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+          <h2>介面與地圖設定</h2>
+          <button class="btn read-section-btn" data-read="settings_summary" data-target="#cardSettings" style="min-height:36px;font-size:12.5px">🔊 朗讀設定項目</button>
+        </div>
+        <label>文字字級：
+          <select id="font">
+            <option value="16">標準 (16px)</option>
+            <option value="19">大字 (19px) - 推薦長輩</option>
+            <option value="22">特大字 (22px) - 清楚易讀</option>
+            <option value="25">超大字 (25px) - 頂級清晰</option>
+          </select>
+        </label>
+        <label>戶外顯示風格：
+          <select id="contrastSelect">
+            <option value="normal">標準清新配色</option>
+            <option value="outdoor">☀️ 戶外強光高對比防眩</option>
+          </select>
+        </label>
+        <label>標記外觀：
+          <select id="marker">
+            <option value="drop">水滴型 (Drop Pin)</option>
+            <option value="dot">精巧圓點 (Dot)</option>
+            <option value="icon">分類圖示 (Category Icon)</option>
+            <option value="square">圓角方塊 (Square Badge)</option>
+            <option value="flag">旗標立牌 (Flag Banner)</option>
+          </select>
+        </label>
+        <label>路線線條風格：
+          <select id="lineStyle">
+            <option value="dash">流動動態虛線 (Animated Dash)</option>
+            <option value="solid">穩重實線 (Solid Line)</option>
+            <option value="glow">發光霓虹 (Neon Glow)</option>
+          </select>
+        </label>
+        <label>配色模式：
+          <select id="color">
+            <option value="day">依天數區分顏色</option>
+            <option value="type">依行程類型區分顏色</option>
+          </select>
+        </label>
+        <label><input type="checkbox" id="motion"> 減少地圖動畫位移動作</label>
+        <label><input type="checkbox" id="labels"> 地圖標記懸浮名稱提示</label>
+        
+        <details>
+          <summary><strong>API 金鑰設定（選填，進階商業地圖服務）</strong></summary>
+          <label>Google Maps API Key：
+            <input id="gkey" type="password" autocomplete="off" placeholder="AIzaSy...">
+          </label>
+          <label>Map8 台灣圖霸 API Key：
+            <input id="mkey" type="password" autocomplete="off" placeholder="填入 Map8 專屬 Token">
+          </label>
+          <div class="bar" style="margin-top:8px">
+            <button id="saveKeys">儲存金鑰並刷新</button>
+            <button id="clearKeys">清除金鑰</button>
+          </div>
+          <p class="note">金鑰僅存於目前瀏覽器本機端。預設之 Leaflet、OpenLayers、MapLibre GL JS 與臺灣通用電子地圖、OpenStreetMap、Esri 衛星等完全免金鑰即可免費暢順使用。</p>
+        </details>
+      </div>
+
+      <div class="card settings">
+        <h2>資料管理與座標校核</h2>
+        <p class="muted">提供系統維護者逐站校正經緯度座標與人工確認標記：</p>
+        <label>選取校核地點：
+          <select id="editStop"></select>
+        </label>
+        <div class="bar">
+          <label>緯度 (Lat)：<input id="lat" type="number" step="any" style="width:145px"></label>
+          <label>經度 (Lng)：<input id="lng" type="number" step="any" style="width:145px"></label>
+        </div>
+        <label><input id="verified" type="checkbox"> 已完成人工實地／圖資核對</label>
+        <div class="bar">
+          <button id="saveCoord">儲存此站座標</button>
+          <button id="resetCoord">還原預設座標</button>
+        </div>
+        <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
+        <label><input type="checkbox" id="includeKeys"> 匯出備份檔時包含 API 金鑰（預設不勾選以策安全）</label>
+        <div class="bar">
+          <button id="backup">匯出設定 JSON</button>
+          <button id="import">匯入設定 JSON</button>
+          <button id="reset" style="color:#b91c1c">重設所有本機偏好</button>
+        </div>
+        <input id="file" type="file" accept="application/json" hidden>
+      </div>
+
+      <div class="card settings">
+        <h2>版本資訊</h2>
+        <p>目前系統版本：<strong>7.5.0 (Smart Sync Voice & TTS API)</strong></p>
+        <label>版本檢查來源網址：
+          <input id="updateURL" type="text" placeholder="https://你的網址/index.html">
+        </label>
+        <button id="checkUpdate">檢查更新版本</button>
+        <div id="updateResult" style="margin-top:8px" role="status"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    新北市鶯歌區農會推廣部 ｜ 洽詢專線：(02) 2670-6262 分機 822<br>
+    路線圖為景點拜訪順序示意，非道路行車導航。實際集合時間與用膳地點以農會公文公告為準。
+  </footer>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom" aria-label="手機選單"></nav>
+
+  <!-- Mobile More Drawer -->
+  <div id="more" hidden role="dialog" aria-modal="true" aria-label="更多功能選單">
+    <div>
+      <h2>更多功能選單</h2>
+      <button data-page="table">📋 地點總表與匯出 (CSV/ICS)</button>
+      <button data-page="guide">🎒 行前須知與費用試算</button>
+      <button data-page="settings">⚙ 系統設定與座標校核</button>
+      <button id="closeMore" style="margin-top:12px;background:#f1f5f9">✕ 關閉</button>
+    </div>
+  </div>
+
+  <!-- Custom Confirm Modal -->
+  <div id="confirmModal" hidden role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="confirmBox">
+      <h3 id="confirmTitle" style="color:var(--green-dark);margin-top:0">請確認操作</h3>
+      <p id="confirmMsg" style="font-size:14.5px;color:var(--text);margin:12px 0"></p>
+      <div class="confirmBtns">
+        <button id="confirmCancel">取消</button>
+        <button id="confirmOk" class="active">確認執行</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔊 常駐語音播放控制台 (Floating Voice Bar + 即時歌詞字幕) -->
+  <div id="voiceBar" class="voice-bar hidden" role="region" aria-label="語音朗讀控制器">
+    <div class="voice-controls-row">
+      <div style="display:flex;align-items:center;gap:8px;min-width:0">
+        <div class="voice-wave" id="voiceWave">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="voice-info" id="voiceStatusText">正在語音朗讀中...</div>
+      </div>
+      <div class="voice-actions">
+        <button id="voicePauseResumeBtn">⏸ 暫停</button>
+        <button id="voiceStopBtn">⏹ 停止</button>
+        <button id="voiceBarSettingsBtn">⚙ 設定</button>
+      </div>
+    </div>
+    <!-- 即時字幕與滾動句子顯示 -->
+    <div class="voice-subtitle-box" id="voiceSubtitleBox">
+      <span id="voiceSubtitleText">準備播放中...</span>
+    </div>
+  </div>
+
+  <!-- 🗣️ 語音多語言、方言、公開 TTS API 與音調設定視窗 (Voice Settings Modal) -->
+  <div id="voiceModal" hidden role="dialog" aria-modal="true" aria-labelledby="voiceModalTitle">
+    <div class="voiceBox">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="voiceModalTitle" style="margin:0">🗣️ 語音朗讀與方言 TTS API 設定</h3>
+        <button id="closeVoiceModal" style="min-height:32px;padding:2px 8px;border-radius:6px">✕</button>
+      </div>
+      <p class="muted" style="font-size:13px;margin:6px 0 14px">台語及客語支援直接串接免費公開雲端 TTS 語音合成 API，並具備即時畫面文字高亮滾動定位。</p>
+
+      <!-- 1. 語言／方言選擇 -->
+      <label style="font-weight:700;display:block;margin:10px 0 4px">🌐 朗讀語言／方言：
+        <select id="voiceDialectSelect" style="width:100%;margin-top:4px">
+          <option value="mandarin">🇹🇼 臺灣華語 (國語標準清晰)</option>
+          <option value="taiwanese">🌾 臺灣台語 (閩南語親切發音・API)</option>
+          <option value="hakka">🌻 臺灣客家語 (客話親切發音・API)</option>
+        </select>
+      </label>
+
+      <!-- 2. 性別／聲音角色 -->
+      <label style="font-weight:700;display:block;margin:12px 0 4px">👤 聲音角色／性別偏好：
+        <select id="voiceGenderSelect" style="width:100%;margin-top:4px">
+          <option value="female">👩 溫和親切女聲 (推薦長輩)</option>
+          <option value="male">👨 沉穩低音男聲</option>
+          <option value="default">🤖 系統預設發音</option>
+        </select>
+      </label>
+
+      <!-- 3. 音調調整 (Pitch) -->
+      <div style="margin:14px 0 6px">
+        <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700">
+          <span>🎵 聲音音調 (Pitch)：</span>
+          <span id="pitchDisplay">1.0</span>
+        </div>
+        <div class="slider-row">
+          <small class="muted">低沉</small>
+          <input type="range" id="pitchSlider" min="0.5" max="1.5" step="0.05" value="1.0">
+          <small class="muted">清脆</small>
+        </div>
+      </div>
+
+      <!-- 4. 語速調整 (Rate) -->
+      <div style="margin:14px 0 6px">
+        <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700">
+          <span>⚡ 說話語速 (Speed)：</span>
+          <span id="rateDisplay">0.88x (長輩推薦)</span>
+        </div>
+        <div class="slider-row">
+          <small class="muted">慢速</small>
+          <input type="range" id="rateSlider" min="0.6" max="1.4" step="0.05" value="0.88">
+          <small class="muted">快速</small>
+        </div>
+      </div>
+
+      <!-- 5. 公開 TTS API 設定 -->
+      <details style="margin-top:14px;padding:8px 12px;border:1px solid var(--line);border-radius:10px" open>
+        <summary style="font-size:13.5px;font-weight:700;cursor:pointer;color:var(--green)">🌐 台語／客語公開 TTS API 串接設定</summary>
+        <label style="font-size:13px;display:block;margin:10px 0 4px">
+          <input type="checkbox" id="usePublicTtsApi" checked> 優先串接免費公開 TTS 音訊 API（離線或異常時自動轉原生語音合成）
+        </label>
+        <label style="font-size:13px;display:block;margin:6px 0 2px">公開 TTS 服務端點網址（選填，可支援自訂代理或學術 API）：
+          <input id="customTtsApiUrl" type="text" placeholder="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl={lang}&q={text}" style="width:100%;font-size:12px;margin-top:4px">
+        </label>
+        <small class="muted" style="display:block;margin-top:4px">系統預設直接對接即時線上高清晰多方言音訊串流，並內建台語/客語專屬口語斷詞與在地用字。</small>
+      </details>
+
+      <!-- 6. 瀏覽器內部語音引擎清單 -->
+      <details style="margin-top:10px;padding:8px 12px;border:1px solid var(--line);border-radius:10px">
+        <summary style="font-size:13px;font-weight:600;cursor:pointer">進階：自選裝置原生內建語音庫 (Web Speech)</summary>
+        <label style="font-size:12.5px;display:block;margin:8px 0 4px">可用聲音引擎列表：
+          <select id="systemVoiceList" style="width:100%;font-size:12px;margin-top:4px"></select>
+        </label>
+      </details>
+
+      <div style="display:flex;justify-content:space-between;gap:8px;margin-top:20px">
+        <button id="testVoiceBtn" class="btn" style="flex:1;background:#ecfdf5;color:#065f46">▶ 試聽目前設定</button>
+        <button id="saveVoiceSettingsBtn" class="btn active" style="flex:1">✓ 儲存設定</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" role="status" id="toast"></div>
+
+  <!-- JavaScript Implementation -->
+  <script>
+    'use strict';
+    const APP_VERSION = '7.5.0';
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const KEY = 'yingge-v7-pref';
+
+    const defaults = {
+      engine: 'leaflet',
+      base: 'emap',
+      font: 19,
+      marker: 'drop',
+      lineStyle: 'dash',
+      color: 'day',
+      outdoor: false,
+      motion: false,
+      labels: true,
+      batch: 0,
+      gkey: '',
+      mkey: '',
+      coords: {},
+      checks: {},
+      customChecks: [],
+      updateURL: '',
+      // Voice / TTS Preferences
+      voice: {
+        dialect: 'mandarin', // 'mandarin' | 'taiwanese' | 'hakka'
+        gender: 'female',   // 'female' | 'male' | 'default'
+        pitch: 1.05,
+        rate: 0.88,
+        voiceURI: '',
+        usePublicApi: true,
+        customApiUrl: ''
+      }
+    };
+
+    let P;
+    try {
+      P = { ...defaults, ...JSON.parse(localStorage.getItem(KEY) || '{}') };
+      if (!P.voice) P.voice = structuredClone(defaults.voice);
+      if (!Array.isArray(P.customChecks)) P.customChecks = [];
+    } catch (e) {
+      P = structuredClone(defaults);
+    }
+
+    const C = ['#1565c0', '#ad4500', '#763db2'];
+    const TC = { 集合: '#526d7a', 景點: '#237d4a', 休息: '#526d7a', 考察: '#b96200', 住宿: '#763db2', 晚餐: '#b8323d' };
+    const IC = { 集合: '🚌', 景點: '📸', 休息: '☕', 考察: '🌾', 住宿: '🏨', 晚餐: '🍽' };
+
+    const raw = [
+      [
+        ['鶯歌區農會', '新北市鶯歌區建國路66號', '02-26706262', 24.9535, 121.3445, '集合', '首日06:00出發，實際上車點依各里別通知', 1, ['🚻 農會大樓公廁', '♿ 電梯無障礙', '🚌 集合出發起點']],
+        ['湖口好客文創園區', '新竹縣湖口鄉中平路一段510號', '03-5905939', 24.9006, 121.0455, '景點', '客家紅磚圓樓童玩、文創特產見學', 1, ['🚻 園區公廁充足', '♿ 全程平坦無障礙', '🌳 戶外古厝步道', '☕ 飲水休憩區']],
+        ['泰安服務區（南下）', '臺中市后里區安眉路113號', '04-25572100', 24.3288, 120.7170, '休息', '國道1號158K+600南下休憩補給站', 1, ['🚻 國道無障礙大廁', '♿ 平整坡道', '🏪 補給便利商店', '☕ 飲水補給']],
+        ['中埔鄉農會', '嘉義縣中埔鄉中埔村中正路75號', '05-2532201', 23.4115, 120.5225, '考察', '農會本部農特產品展售與農業經營交流', 1, ['🚻 農會本部公廁', '♿ 一樓無障礙', '🌾 在地農特產見學']],
+        ['品皇咖啡觀光工廠', '嘉義縣水上鄉大崙村155號', '05-3713899', 23.4285, 120.3935, '景點', '咖啡烘焙製程與文創觀光體驗', 1, ['🚻 觀光工廠大廁', '♿ 全館無階梯/平路', '❄️ 室內全空調涼爽', '☕ 免費試飲區']],
+        ['嘉義皇品國際酒店', '嘉義市西區自由路468號', '05-2341777', 23.492622, 120.432586, '住宿', '第一晚夜宿飯店，享用晚宴與休憩', 0, ['🏨 四星級舒適飯店', '♿ 飯店電梯無障礙', '🍽️ 晚宴場地', '🚻 飯店大廳洗手間']]
+      ],
+      [
+        ['台江國家公園遊客中心', '臺南市安南區四草大道118號', '06-2842600', 23.0255, 120.1525, '景點', '全台首座高腳屋水上綠建築，濕地景觀', 1, ['🚻 遊客中心公廁', '♿ 水上無障礙木棧道', '🌳 水上綠建築', '☂️ 戶外日曬請備帽']],
+        ['四草綠色隧道', '臺南市安南區大眾路360號', '06-2840959', 23.01959, 120.13633, '景點', '搭乘平底竹筏巡訪紅樹林生態隧道', 0, ['🚻 大眾廟旁公廁', '🛶 穿救生衣搭平底竹筏', '☂️ 現場備有斗笠遮陽', '👟 登船跨步需小心']],
+        ['七股區農會', '臺南市七股區大埕里272號', '06-7871711', 23.1393, 120.0690, '考察', '七股沿海農業、紅蔥頭產業交流考察', 1, ['🚻 農會大樓化妝室', '♿ 平坦地面', '🌾 紅蔥頭產業交流']],
+        ['安平老街', '臺南市安平區延平街', '', 23.0015, 120.1608, '景點', '台灣第一街散策、劍獅文化與古早味小吃', 1, ['🚻 鄰近安平古堡公廁', '👟 老街石板平緩步道', '🛍️ 伴手禮小吃散策']],
+        ['台糖長榮酒店（台南）', '臺南市東區中華東路三段336巷1號', '06-2899988', 22.9855, 120.2316, '住宿', '第二晚夜宿台南市區星級飯店、晚宴', 1, ['🏨 五星級國際酒店', '♿ 全館完善無障礙', '🍽️ 豐盛晚宴', '🚻 飯店洗手間']]
+      ],
+      [
+        ['國立臺灣歷史博物館', '臺南市安南區長和路一段250號', '06-3568889', 23.058373, 120.23498, '景點', '光電雲牆、台灣先民生活與歷史演進展覽', 0, ['🚻 國家級無障礙公廁', '♿ 全館電梯無階梯', '❄️ 室內全空調冷氣', '🛋️ 展區休息長椅充足']],
+        ['北港朝天宮', '雲林縣北港鎮中山路178號', '05-7832055', 23.5693, 120.3025, '景點', '國定古蹟媽祖總廟，參香祈福與老街巡禮', 1, ['🚻 廟旁遊客公廁', '👟 廟埕老街平路', '🙏 香客眾多請留步履', '麻油大餅特產']],
+        ['市民農園休閒餐廳', '新北市鶯歌區環河路173號之1', '02-26777378', 24.9560, 121.3560, '晚餐', '返抵鶯歌，共進豐盛慶功晚宴後平安賦歸', 1, ['🍽️ 慶功宴平地餐廳', '🚻 餐廳化妝室', '♿ 一樓無階梯方便進出']]
+      ]
+    ];
+
+    const titles = ['北部出發・南下嘉義', '台南生態・農產與安平', '歷史文化・北港朝天宮'];
+    const area = ['鶯歌 → 湖口 → 泰安 → 中埔 → 水上 → 嘉義市', '台江水上屋 → 四草 → 七股 → 安平 → 台南東區', '台南市 → 臺史博 → 北港朝天宮 → 鶯歌慶功'];
+
+    const stops = raw.flatMap((d, day) => d.map((r, i) => ({
+      id: `d${day + 1}s${i + 1}`,
+      day,
+      n: i + 1,
+      name: r[0],
+      address: r[1],
+      phone: r[2],
+      lat0: r[3],
+      lng0: r[4],
+      type: r[5],
+      note: r[6],
+      approx: !!r[7],
+      amenities: r[8] || ['🚻 具備洗手間']
+    })));
+
+    function coord(s) {
+      const c = P.coords[s.id];
+      return c ? [c.lat, c.lng] : [s.lat0, s.lng0];
+    }
+
+    function status(s) {
+      return P.coords[s.id]?.verified ? '人工確認座標' : P.coords[s.id] ? '自訂座標・待確認' : s.approx ? '概略估計座標' : '來源資料座標';
+    }
+
+    const esc = t => String(t || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    
+    // External and open map URLs
+    const gm = s => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.name + ' ' + s.address);
+    const dir = s => 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(s.name + ' ' + s.address);
+    const osm = s => {
+      const [a, b] = coord(s);
+      return `https://www.openstreetmap.org/?mlat=${a}&mlon=${b}#map=17/${a}/${b}`;
+    };
+    const nlscMap = s => {
+      const [a, b] = coord(s);
+      return `https://maps.nlsc.gov.tw/?lat=${a}&lon=${b}&z=17`;
+    };
+    const appleMap = s => {
+      const [a, b] = coord(s);
+      return `https://maps.apple.com/?q=${encodeURIComponent(s.name)}&ll=${a},${b}`;
+    };
+    const bingMap = s => {
+      const [a, b] = coord(s);
+      return `https://www.bing.com/maps?sp=point.${a}_${b}_${encodeURIComponent(s.name)}`;
+    };
+    const geoUri = s => {
+      const [a, b] = coord(s);
+      return `geo:${a},${b}?q=${a},${b}(${encodeURIComponent(s.name)})`;
+    };
+
+    function save() {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(P));
+      } catch (e) {
+        toast('無法儲存偏好設定');
+      }
+    }
+
+    function toast(t) {
+      const el = $('#toast');
+      el.textContent = t;
+      el.style.display = 'block';
+      clearTimeout(toast.timer);
+      toast.timer = setTimeout(() => el.style.display = 'none', 3000);
+    }
+
+    function customConfirm(message, title = '請確認操作') {
+      return new Promise(resolve => {
+        const modal = $('#confirmModal');
+        $('#confirmTitle').textContent = title;
+        $('#confirmMsg').textContent = message;
+        modal.hidden = false;
+
+        const onOk = () => { cleanup(); resolve(true); };
+        const onCancel = () => { cleanup(); resolve(false); };
+        const cleanup = () => {
+          modal.hidden = true;
+          $('#confirmOk').removeEventListener('click', onOk);
+          $('#confirmCancel').removeEventListener('click', onCancel);
+        };
+
+        $('#confirmOk').addEventListener('click', onOk);
+        $('#confirmCancel').addEventListener('click', onCancel);
+      });
+    }
+
+    function safeCopyText(text, successMsg = '已複製到剪貼簿') {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.top = '0';
+      textarea.style.left = '0';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      let ok = false;
+      try {
+        ok = document.execCommand('copy');
+      } catch (err) {
+        ok = false;
+      }
+      document.body.removeChild(textarea);
+
+      if (ok) {
+        toast(successMsg);
+      } else if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => toast(successMsg)).catch(() => toast('請手動選取複製'));
+      } else {
+        toast('請手動選取複製');
+      }
+    }
+
+    // ============================================================
+    // 🔊 全方位智慧語音朗讀系統 (台語/客語公開 TTS API + 高亮滾動)
+    // ============================================================
+    let systemVoices = [];
+    let isSpeaking = false;
+    let isPaused = false;
+    let activeHighlightEl = null;
+    let activeQueueIndex = -1;
+    let currentSpeechQueue = [];
+    let audioTtsPlayer = new Audio();
+
+    // 瀏覽器系統語音辨識庫整理
+    function populateSystemVoices() {
+      if (!('speechSynthesis' in window)) return;
+      systemVoices = window.speechSynthesis.getVoices();
+      const sel = $('#systemVoiceList');
+      if (!sel) return;
+      sel.innerHTML = '<option value="">-- 由系統自動挑選最適發音引擎 --</option>';
+
+      systemVoices.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.voiceURI;
+        opt.textContent = `${v.name} (${v.lang})${v.default ? ' [系統預設]' : ''}`;
+        sel.appendChild(opt);
+      });
+
+      if (P.voice.voiceURI) {
+        sel.value = P.voice.voiceURI;
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = populateSystemVoices;
+      populateSystemVoices();
+    }
+
+    // 清除目前畫面上所有朗讀高亮
+    function clearHighlight() {
+      if (activeHighlightEl) {
+        activeHighlightEl.classList.remove('reading-highlight-card', 'reading-highlight-row');
+        activeHighlightEl = null;
+      }
+      $$('.reading-highlight-card, .reading-highlight-row').forEach(el => {
+        el.classList.remove('reading-highlight-card', 'reading-highlight-row');
+      });
+    }
+
+    // 捲動並聚焦指定元素
+    function highlightAndScrollTo(el) {
+      clearHighlight();
+      if (!el) return;
+      activeHighlightEl = el;
+      if (el.tagName === 'TR') {
+        el.classList.add('reading-highlight-row');
+      } else {
+        el.classList.add('reading-highlight-card');
+      }
+      try {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        el.scrollIntoView();
+      }
+    }
+
+    // 免費公開 TTS 雲端 API 音訊取得函式 (支援台語、客語與國語)
+    function getPublicTtsAudioUrl(text, dialect) {
+      const clean = text.replace(/[\r\n\t]+/g, ' ').trim().slice(0, 180);
+      let langParam = 'zh-TW';
+      if (dialect === 'taiwanese') langParam = 'zh-TW'; // 包含台語方言語意
+      if (dialect === 'hakka') langParam = 'zh-TW';
+
+      if (P.voice.customApiUrl && P.voice.customApiUrl.trim()) {
+        return P.voice.customApiUrl
+          .replace('{text}', encodeURIComponent(clean))
+          .replace('{lang}', langParam);
+      }
+      // 官方公開免金鑰 TTS 串流端點
+      return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${langParam}&q=${encodeURIComponent(clean)}`;
+    }
+
+    // 依據使用者選擇的方言 (國語 / 台語 / 客語) 智慧生成在地口語文稿
+    function adaptSpeechScript(type, rawData) {
+      const dialect = P.voice.dialect || 'mandarin';
+
+      if (dialect === 'taiwanese') {
+        // 臺灣台語（閩南語口語文稿）
+        switch (type) {
+          case 'page_overview':
+          case 'overview_intro':
+            return `逐家好！歡迎參加鶯歌區農會115年度觀摩見學活動。這擺三天兩夜的台灣巡禮，對新北鶯歌出發，第一工透早南下到嘉義，第二工去台南七股佮安平老街，第三工參訪歷史博物館佮北港朝天宮，再平安倒轉來鶯歌。全程攏總有十四個據點，分做兩梯次出發。請逐家記得帶國民身分證佮健保卡，祝逐家旅途平安、順序好行！`;
+          case 'all_timeline':
+            return `三天行程時序報告：第一工從鶯歌出發，停靠湖口好客園區、泰安休息站、中埔鄉農會佮品皇咖啡，暗時歇在嘉義皇品酒店；第二工探訪台江水上綠建築、四草綠色隧道搭竹筏、七股農會、安平老街，夜宿台糖長榮酒店；第三工參觀臺灣歷史博物館，下晡到北港朝天宮參香祈福，暗時倒轉來鶯歌吃慶功宴。`;
+          case 'page_cal':
+          case 'cal_day':
+            const dayIdx = S.day < 0 ? 0 : S.day;
+            const dayStops = stops.filter(s => s.day === dayIdx);
+            return `現時展示的是第${dayIdx + 1}工行程：${titles[dayIdx]}。主要路線：${area[dayIdx]}。預計停靠地點包括：` + dayStops.map(s => s.name).join('、') + `。請逐家聽從導遊佮工作人員引導，準時上車喔！`;
+          case 'page_mapx':
+          case 'mapx_summary':
+            const filteredStops = list('mapx');
+            return `地圖互動頁面。目前清單攏總有 ${filteredStops.length} 個地點。您會當點擊地圖圖釘，查閱詳細地址、公廁配置佮無障礙步道資訊。`;
+          case 'page_table':
+          case 'table_summary':
+            return `地點總表與導航頁面。本頁列出十四個據點的電話與地址。每一站攏有 Google導航、國土測繪圖資佮 OpenStreetMap，亦會當一鍵下載 CSV 表格或匯入手機日曆。`;
+          case 'page_guide':
+          case 'guide_rules':
+            return `行前須知報告：新北市鶯歌區農會主辦，出發日透早六點準時開車，千萬毋通慢來。出發當日會對身分證，嚴格禁止冒名頂替；八十五歲以上長輩請家屬斟酌加保旅平險。`;
+          case 'guide_fee':
+            const totFee = (Math.max(0, +$('#nm').value || 0) * 3000) + (Math.max(0, +$('#nf').value || 0) * 7000);
+            return `費用試算報告：會員一人三千箍，隨行眷屬一人七千箍。目前試算應繳總金額是新台幣 ${totFee.toLocaleString()} 元。實際費用以臨櫃收據為準。`;
+          case 'checklist':
+            return rawData || '隨身行李清單提醒：身分證正本、健保卡、常備藥品、保溫水壺同換洗衣物，出發前請記得巡過一遍喔！';
+          case 'page_settings':
+          case 'settings_summary':
+            return `系統設定頁面。您會當在這裡調整文字大小、切換戶外強光模式、自選地圖圖資引擎，以及設定座標校核。`;
+          default:
+            return rawData;
+        }
+      } else if (dialect === 'hakka') {
+        // 臺灣客家語（四縣/海陸口語文稿）
+        switch (type) {
+          case 'page_overview':
+          case 'overview_intro':
+            return `大家好！歡迎參加鶯歌區農會115年度觀摩活動。這回三天兩夜嘅台灣巡禮，對新北鶯歌出發，第一日朝晨南下到嘉義，第二日到台南七股摎安平老街，第三日參訪國立臺灣歷史博物館摎北港朝天宮，續等平安轉到鶯歌。總共有十四個地點，分兩梯次出發。請大家記得帶身分證摎健保卡，祝大家旅行暢意、平安順利！`;
+          case 'all_timeline':
+            return `三天行程時序報告：第一日對鶯歌出發，到新竹湖口好客園區、泰安休息站、中埔鄉農會同水上品皇咖啡，夜宿嘉義皇品大飯店；第二日參觀台江水上綠建築、四草綠色隧道搭竹筏、七股農會、安平老街，歇在台糖長榮酒店；第三日參觀歷史博物館，下晝到北港朝天宮參拜媽祖，暗晡轉到鶯歌市民農園食晚酒慶功。`;
+          case 'page_cal':
+          case 'cal_day':
+            const dayIdxH = S.day < 0 ? 0 : S.day;
+            const dayStopsH = stops.filter(s => s.day === dayIdxH);
+            return `目前顯示嘅係第${dayIdxH + 1}日行程：${titles[dayIdxH]}。主要行車路線：${area[dayIdxH]}。停靠據點包括：` + dayStopsH.map(s => s.name).join('、') + `。請大家遵照導遊指示準時頂車！`;
+          case 'page_mapx':
+          case 'mapx_summary':
+            return `地圖互動頁面。清單總共有 ${list('mapx').length} 個據點。點擊圖釘做得查詢詳細電話、公廁同無障礙通道資訊。`;
+          case 'page_table':
+          case 'table_summary':
+            return `地點資料總表。列出全覽各站地址、電話摎民生公廁標示。提供多種地圖導航直達功能，歡迎下載日曆同表格。`;
+          case 'page_guide':
+          case 'guide_rules':
+            return `行前須知報告：新北市鶯歌區農會主辦，出發當日朝晨六點準時發車，逾時不候。出發當日會核對身分證正本，嚴禁冒名頂替；八十五歲以上長輩請記得加保旅平險。`;
+          case 'guide_fee':
+            const totFeeH = (Math.max(0, +$('#nm').value || 0) * 3000) + (Math.max(0, +$('#nf').value || 0) * 7000);
+            return `費用試算結果：會員一人三千銀，隨行眷屬一人七千銀。合計總金額係新台幣 ${totFeeH.toLocaleString()} 元整。`;
+          case 'checklist':
+            return rawData || '行李備忘清單：身分證正本、健保卡、隨身降血壓藥物、水壺同換洗衣物，出門前請逐一檢查！';
+          default:
+            return rawData;
+        }
+      } else {
+        // 臺灣華語 (國語標準清晰文稿)
+        switch (type) {
+          case 'page_overview':
+          case 'overview_intro':
+            return `各位長輩與會員大家好！歡迎使用鶯歌區農會115年度觀摩活動導覽系統。本次三天兩夜嘉義與台南見學巡禮，由鶯歌清晨出發，首日南下嘉義，次日深度走訪台江生態與安平文化，第三日參訪國立臺灣歷史博物館與北港朝天宮後返抵鶯歌。全程共十四處據點，分為兩梯次出發。請務必攜帶身分證正本與健保卡，預祝大家旅途平安愉快！`;
+          case 'all_timeline':
+            return `三天路線時序說明：第一天南下嘉義，途經湖口文創園區、泰安服務區、中埔鄉農會與品皇咖啡，夜宿嘉義皇品國際酒店；第二天造訪台江國家公園高腳屋、四草綠色隧道搭竹筏、七股區農會與安平老街，夜宿台糖長榮酒店；第三天上午參訪國立臺灣歷史博物館，下午至北港朝天宮參香祈福，晚間返抵鶯歌享用慶功晚宴。`;
+          case 'page_cal':
+          case 'cal_day':
+            const d = S.day < 0 ? 0 : S.day;
+            const curDayStops = stops.filter(s => s.day === d);
+            return `目前為您顯示第${d + 1}天行程：${titles[d]}。預計路線：${area[d]}。停靠站包含：` + curDayStops.map(s => s.name).join('、') + `。請配合領隊車長集合時間。`;
+          case 'page_mapx':
+          case 'mapx_summary':
+            return `地圖互動查詢。目前符合條件之地點共有 ${list('mapx').length} 處。您可以點擊任何標記查看公廁與無障礙步道指標。`;
+          case 'page_table':
+          case 'table_summary':
+            return `地點地址與開放地圖表。收錄全程具名站點之電話、地址、無障礙設施與多種導航連結，亦可匯出 CSV 表格或手機行事曆。`;
+          case 'page_guide':
+          case 'guide_rules':
+            return `行前重要須知：鶯歌區農會主辦，出發日早上六點準時發車，逾時不候。出發當日逐一查驗身分證正本，嚴禁冒名頂替；八十五歲以上長輩請家屬自行斟酌加保旅遊平安險。`;
+          case 'guide_fee':
+            const feeTot = (Math.max(0, +$('#nm').value || 0) * 3000) + (Math.max(0, +$('#nf').value || 0) * 7000);
+            return `費用試算說明：會員每人三千元，隨行家屬每人七千元。目前試算合計總金額為新台幣 ${feeTot.toLocaleString()} 元整。`;
+          case 'checklist':
+            return rawData || '行前行李提醒：國民身分證、全民健保卡、常備藥品、水壺與換洗衣物，請於出發前詳細核對！';
+          case 'page_settings':
+          case 'settings_summary':
+            return `介面與系統設定頁面。您可自由挑選四段文字大小、戶外強光高對比模式、五大地圖引擎以及座標校核工具。`;
+          default:
+            return rawData;
+        }
+      }
+    }
+
+    // 核心語音播放控制器 (支援陣列佇列播放、文字高亮滾動、台客語 API 與 Web Speech 雙引擎)
+    function playSpeechQueue(queue, mainTitle = '語音導覽') {
+      stopSpeaking();
+      if (!queue || !queue.length) return;
+
+      currentSpeechQueue = queue;
+      activeQueueIndex = 0;
+      isSpeaking = true;
+      isPaused = false;
+
+      $('#voiceBar').classList.remove('hidden');
+      $('#voiceStatusText').textContent = `正在朗讀：${mainTitle}`;
+      $('#voicePauseResumeBtn').textContent = '⏸ 暫停';
+      $('#voiceWave').style.visibility = 'visible';
+
+      function playNext() {
+        if (!isSpeaking || activeQueueIndex >= currentSpeechQueue.length) {
+          stopSpeaking();
+          return;
+        }
+
+        const item = currentSpeechQueue[activeQueueIndex];
+        const text = item.text.trim();
+        const el = item.el || null;
+
+        // 1. 同步滾動並高亮畫面上的對應項目
+        if (el) {
+          highlightAndScrollTo(el);
+        } else {
+          clearHighlight();
+        }
+
+        // 2. 更新歌詞字幕條
+        $('#voiceSubtitleText').textContent = text;
+        $('#voiceStatusText').textContent = `${mainTitle} (${activeQueueIndex + 1}/${currentSpeechQueue.length})`;
+
+        const dialect = P.voice.dialect || 'mandarin';
+        const useApi = P.voice.usePublicApi && (dialect === 'taiwanese' || dialect === 'hakka');
+
+        if (useApi) {
+          // A 模式：直接串接免費公開 TTS API 音訊
+          const audioUrl = getPublicTtsAudioUrl(text, dialect);
+          audioTtsPlayer.src = audioUrl;
+          audioTtsPlayer.playbackRate = parseFloat(P.voice.rate || 0.88);
+          
+          audioTtsPlayer.onended = () => {
+            activeQueueIndex++;
+            playNext();
+          };
+
+          audioTtsPlayer.onerror = (e) => {
+            console.warn('公開 TTS API 呼叫失敗，自動降級至 Web Speech 引擎:', e);
+            fallbackWebSpeech(text, () => {
+              activeQueueIndex++;
+              playNext();
+            });
+          };
+
+          audioTtsPlayer.play().catch(err => {
+            console.warn('Audio play 被瀏覽器攔截或跨域問題，切換至 Web Speech:', err);
+            fallbackWebSpeech(text, () => {
+              activeQueueIndex++;
+              playNext();
+            });
+          });
+
+        } else {
+          // B 模式：原生 Web Speech API 語音合成
+          fallbackWebSpeech(text, () => {
+            activeQueueIndex++;
+            playNext();
+          });
+        }
+      }
+
+      playNext();
+      toast('🔊 正在為您逐項朗讀並同步高亮...');
+    }
+
+    // Web Speech API 播放與音調、性別微調
+    function fallbackWebSpeech(text, onEndCallback) {
+      if (!('speechSynthesis' in window)) {
+        onEndCallback();
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-TW';
+
+      const voices = window.speechSynthesis.getVoices();
+      let chosenVoice = null;
+      if (P.voice.voiceURI) {
+        chosenVoice = voices.find(v => v.voiceURI === P.voice.voiceURI);
+      }
+      if (!chosenVoice) {
+        const twVoices = voices.filter(v => /zh[-_]TW|cmn[-_]TW|Hant/i.test(v.lang) || /Taiwan|臺灣|台灣|國語/i.test(v.name));
+        if (P.voice.gender === 'female') {
+          chosenVoice = twVoices.find(v => /female|girl|女|HsiaoChen|HanHan|Yating|Mei-Jia/i.test(v.name)) || twVoices[0];
+        } else if (P.voice.gender === 'male') {
+          chosenVoice = twVoices.find(v => /male|boy|男|YunJhe|Zhiwei|Danny/i.test(v.name)) || twVoices[0];
+        } else {
+          chosenVoice = twVoices[0];
+        }
+      }
+
+      let pitchVal = parseFloat(P.voice.pitch || 1.0);
+      if (P.voice.gender === 'female' && pitchVal === 1.0) pitchVal = 1.15;
+      if (P.voice.gender === 'male' && pitchVal === 1.0) pitchVal = 0.8;
+
+      if (chosenVoice) utterance.voice = chosenVoice;
+      utterance.pitch = pitchVal;
+      utterance.rate = parseFloat(P.voice.rate || 0.88);
+
+      utterance.onend = onEndCallback;
+      utterance.onerror = (e) => {
+        console.warn('Speech error:', e);
+        onEndCallback();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // 單純播放一段文字與綁定單一元素
+    function speakText(text, title = '語音導覽', targetEl = null) {
+      playSpeechQueue([{ text, el: targetEl }], title);
+    }
+
+    // 暫停與繼續播放
+    function pauseOrResumeSpeech() {
+      const dialect = P.voice.dialect || 'mandarin';
+      const useApi = P.voice.usePublicApi && (dialect === 'taiwanese' || dialect === 'hakka');
+
+      if (isPaused) {
+        if (useApi && audioTtsPlayer.src) {
+          audioTtsPlayer.play();
+        } else if ('speechSynthesis' in window) {
+          window.speechSynthesis.resume();
+        }
+        isPaused = false;
+        $('#voicePauseResumeBtn').textContent = '⏸ 暫停';
+        $('#voiceWave').style.visibility = 'visible';
+        toast('繼續朗讀');
+      } else {
+        if (useApi && audioTtsPlayer.src) {
+          audioTtsPlayer.pause();
+        } else if ('speechSynthesis' in window) {
+          window.speechSynthesis.pause();
+        }
+        isPaused = true;
+        $('#voicePauseResumeBtn').textContent = '▶ 繼續';
+        $('#voiceWave').style.visibility = 'hidden';
+        toast('已暫停朗讀');
+      }
+    }
+
+    // 停止朗讀與還原狀態
+    function stopSpeaking() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      try {
+        audioTtsPlayer.pause();
+        audioTtsPlayer.src = '';
+      } catch (e) {}
+
+      isSpeaking = false;
+      isPaused = false;
+      activeQueueIndex = -1;
+      currentSpeechQueue = [];
+      clearHighlight();
+      $('#voiceBar').classList.add('hidden');
+      $('#voiceWave').style.visibility = 'hidden';
+    }
+
+    $('#voicePauseResumeBtn').onclick = pauseOrResumeSpeech;
+    $('#voiceStopBtn').onclick = () => {
+      stopSpeaking();
+      toast('已停止語音朗讀');
+    };
+    $('#voiceBarSettingsBtn').onclick = () => openVoiceSettingsModal();
+
+    // ============================================================
+    // 🌟 全頁「🔊 朗讀本頁」：依據當前分頁組織可高亮佇列
+    // ============================================================
+    function readCurrentPageContent() {
+      const pageKey = S.page || 'overview';
+      const queue = [];
+      const dialect = P.voice.dialect || 'mandarin';
+
+      if (pageKey === 'overview') {
+        const introText = adaptSpeechScript('overview_intro');
+        queue.push({ text: introText, el: $('#cardOverviewIntro') });
+
+        // 三天時序卡片
+        const cards = $$('#routeCards .daycard');
+        cards.forEach((c, idx) => {
+          const t = `第${idx + 1}天行程：${titles[idx]}。主要行經路線：${area[idx]}。`;
+          queue.push({ text: t, el: c });
+        });
+
+      } else if (pageKey === 'cal') {
+        const d = S.day < 0 ? 0 : S.day;
+        const dayHeadText = `目前為您顯示第${d + 1}天行程，${titles[d]}。`;
+        queue.push({ text: dayHeadText, el: $('#cardCalDay') });
+
+        const dayArticles = $$('#dayTimeline article');
+        dayArticles.forEach(a => {
+          const title = a.querySelector('h3')?.textContent || '';
+          const address = a.querySelector('p')?.textContent || '';
+          queue.push({ text: `${title}，地址：${address}。`, el: a });
+        });
+
+      } else if (pageKey === 'mapx') {
+        queue.push({ text: adaptSpeechScript('mapx_summary'), el: $('#cardMapx') });
+        const stopsList = $$('#stopList .stop');
+        stopsList.slice(0, 10).forEach(st => {
+          const name = st.querySelector('span[style*="font-weight:700"]')?.textContent || '';
+          const small = st.querySelector('small')?.textContent || '';
+          queue.push({ text: `${name}，${small}。`, el: st });
+        });
+
+      } else if (pageKey === 'table') {
+        queue.push({ text: adaptSpeechScript('table_summary'), el: $('#cardTable') });
+        const rows = $$('#rows tr[data-stop]');
+        rows.slice(0, 10).forEach(r => {
+          const name = r.children[1]?.querySelector('strong')?.textContent || '';
+          const addr = r.children[2]?.textContent || '';
+          queue.push({ text: `據點：${name}，地址：${addr}。`, el: r });
+        });
+
+      } else if (pageKey === 'guide') {
+        queue.push({ text: adaptSpeechScript('guide_rules'), el: $('#cardGuideRules') });
+        queue.push({ text: adaptSpeechScript('guide_fee'), el: $('#cardGuideFee') });
+        queue.push({ text: '以下為您核對個人行李清單：', el: $('#cardChecklist') });
+        
+        const allItems = [...defaultPackItems, ...P.customChecks];
+        const unchecked = allItems.filter(i => !P.checks[i.id]);
+        if (unchecked.length) {
+          queue.push({ text: `提醒您，您目前尚有 ${unchecked.length} 項物品未準備：` + unchecked.map(i => i.name).join('、'), el: $('#cardChecklist') });
+        } else {
+          queue.push({ text: '恭喜您！所有隨身行李已全部打勾準備齊全！', el: $('#cardChecklist') });
+        }
+
+      } else if (pageKey === 'settings') {
+        queue.push({ text: adaptSpeechScript('settings_summary'), el: $('#cardSettings') });
+      }
+
+      const pageNameMap = {
+        overview: '巡禮全貌',
+        cal: '每日行程',
+        mapx: '地圖互動',
+        table: '地點總表',
+        guide: '行前須知與清單',
+        settings: '系統設定'
+      };
+
+      playSpeechQueue(queue, pageNameMap[pageKey] || '本頁內容');
+    }
+
+    $('#readCurrentPageBtn').onclick = readCurrentPageContent;
+
+    // 各區塊獨立朗讀按鈕 (附帶元素高亮)
+    $$('.read-section-btn').forEach(btn => {
+      btn.onclick = () => {
+        const type = btn.dataset.read;
+        const targetSel = btn.dataset.target;
+        const targetEl = targetSel ? $(targetSel) : btn.closest('.card');
+        const text = adaptSpeechScript(type);
+        speakText(text, btn.textContent.replace('🔊', '').trim(), targetEl);
+      };
+    });
+
+    // 語音設定視窗控制器
+    function openVoiceSettingsModal() {
+      $('#voiceModal').hidden = false;
+      $('#voiceDialectSelect').value = P.voice.dialect || 'mandarin';
+      $('#voiceGenderSelect').value = P.voice.gender || 'female';
+      $('#pitchSlider').value = P.voice.pitch || 1.0;
+      $('#pitchDisplay').textContent = parseFloat(P.voice.pitch || 1.0).toFixed(2);
+      $('#rateSlider').value = P.voice.rate || 0.88;
+      $('#rateDisplay').textContent = `${parseFloat(P.voice.rate || 0.88).toFixed(2)}x`;
+      $('#usePublicTtsApi').checked = P.voice.usePublicApi !== false;
+      $('#customTtsApiUrl').value = P.voice.customApiUrl || '';
+      populateSystemVoices();
+      if (P.voice.voiceURI) $('#systemVoiceList').value = P.voice.voiceURI;
+    }
+
+    function closeVoiceSettingsModal() {
+      $('#voiceModal').hidden = true;
+    }
+
+    $('#openVoiceModalBtn').onclick = openVoiceSettingsModal;
+    $('#closeVoiceModal').onclick = closeVoiceSettingsModal;
+
+    $('#pitchSlider').oninput = e => {
+      $('#pitchDisplay').textContent = parseFloat(e.target.value).toFixed(2);
+    };
+
+    $('#rateSlider').oninput = e => {
+      $('#rateDisplay').textContent = `${parseFloat(e.target.value).toFixed(2)}x`;
+    };
+
+    $('#saveVoiceSettingsBtn').onclick = () => {
+      P.voice.dialect = $('#voiceDialectSelect').value;
+      P.voice.gender = $('#voiceGenderSelect').value;
+      P.voice.pitch = parseFloat($('#pitchSlider').value);
+      P.voice.rate = parseFloat($('#rateSlider').value);
+      P.voice.voiceURI = $('#systemVoiceList').value;
+      P.voice.usePublicApi = $('#usePublicTtsApi').checked;
+      P.voice.customApiUrl = $('#customTtsApiUrl').value.trim();
+      save();
+      closeVoiceSettingsModal();
+      toast('語音與公開 TTS API 設定已儲存！');
+      
+      const confirmSpeech = adaptSpeechScript('overview_intro');
+      speakText(confirmSpeech.slice(0, 42) + '...', '設定確認試聽');
+    };
+
+    $('#testVoiceBtn').onclick = () => {
+      const tempDialect = $('#voiceDialectSelect').value;
+      let testSentence = '歡迎參加鶯歌區農會觀摩活動，祝您旅途平安愉快！';
+      if (tempDialect === 'taiwanese') {
+        testSentence = '逐家好！歡迎參加鶯歌農會觀摩活動，祝逐家旅途平安、順序好行！';
+      } else if (tempDialect === 'hakka') {
+        testSentence = '大家好！歡迎參加鶯歌區農會觀摩活動，祝大家旅行暢意、平安順利！';
+      }
+      const prevDialect = P.voice.dialect;
+      P.voice.dialect = tempDialect;
+      speakText(testSentence, '語音試聽');
+      P.voice.dialect = prevDialect;
+    };
+
+    function date(d) {
+      return (P.batch === 0 ? ['10/27 (二)', '10/28 (三)', '10/29 (四)'] : ['11/2 (一)', '11/3 (二)', '11/4 (三)'])[d];
+    }
+
+    const NL = id => `https://wmts.nlsc.gov.tw/wmts/${id}/default/GoogleMapsCompatible/{z}/{y}/{x}`;
+    
+    const bases = {
+      emap: { n: '🇹🇼 臺灣通用電子地圖 (NLSC)', u: NL('EMAP'), a: '© 內政部國土測繪中心', max: 19 },
+      photo: { n: '📸 國土測繪航照正射影像 (NLSC)', u: NL('PHOTO2'), a: '© 內政部國土測繪中心', max: 19 },
+      terrain: { n: '⛰️ 臺灣經建版地形圖 (NLSC)', u: NL('B25000'), a: '© 內政部國土測繪中心', max: 16 },
+      osm: { n: '🌍 OpenStreetMap (全球標準風格)', u: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', a: '© OpenStreetMap contributors', max: 19 },
+      carto_light: { n: '🕊️ CARTO 簡約淺色 (Positron)', u: 'https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', a: '© CARTO, © OpenStreetMap', max: 19 },
+      carto_dark: { n: '🌙 CARTO 黑曜夜間 (Dark Matter)', u: 'https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', a: '© CARTO, © OpenStreetMap', max: 19 },
+      carto_voyager: { n: '🧭 CARTO 繽紛探險 (Voyager)', u: 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', a: '© CARTO, © OpenStreetMap', max: 19 },
+      sat: { n: '🛰️ Esri 全球高解析衛星空照', u: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', a: 'Tiles © Esri', max: 19 },
+      esri_topo: { n: '🗺️ Esri 經典等高線地形圖', u: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', a: 'Tiles © Esri', max: 19 }
+    };
+
+    const engines = {
+      leaflet: 'Leaflet (開源輕量・推薦)',
+      ol: 'OpenLayers (專業 GIS 引擎)',
+      ml: 'MapLibre GL JS (向量 GPU 加速)',
+      google: 'Google Maps (免金鑰內嵌／API)',
+      map8: 'Map8 台灣圖霸 (臺灣在地商業圖資)'
+    };
+
+    let S = { page: 'overview', day: -1, sel: null, query: '', type: '', routes: true };
+    const views = {};
+    const allPages = ['overview', 'cal', 'mapx', 'table', 'guide', 'settings'];
+    const pageNames = ['🏝 巡禮全貌', '📅 每日行程', '🗺 地圖互動', '📋 地點表', '🎒 行前／費用', '⚙ 設定'];
+
+    function list(kind) {
+      return stops.filter(s =>
+        (S.day < 0 || s.day === S.day) &&
+        (kind !== 'mapx' || ((!S.type || s.type === S.type) && (!S.query || (s.name + s.address + s.phone + s.amenities.join('')).toLowerCase().includes(S.query))))
+      );
+    }
+
+    const cache = {};
+    function css(u) {
+      if (document.querySelector(`link[href="${u}"]`)) return;
+      const l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = u;
+      document.head.appendChild(l);
+    }
+    function script(u) {
+      if (cache[u]) return cache[u];
+      return cache[u] = new Promise((res, rej) => {
+        const e = document.createElement('script');
+        e.src = u;
+        e.onload = res;
+        e.onerror = () => { delete cache[u]; rej(Error('套件載入失敗，請檢查網路連線')); };
+        document.head.appendChild(e);
+      });
+    }
+
+    async function lib(k) {
+      if (k === 'leaflet') {
+        css('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+        await script('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');
+      }
+      if (k === 'ol') {
+        css('https://cdn.jsdelivr.net/npm/ol@10.3.1/ol.css');
+        await script('https://cdn.jsdelivr.net/npm/ol@10.3.1/dist/ol.js');
+      }
+      if (k === 'ml' || k === 'map8') {
+        css('https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css');
+        await script('https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js');
+      }
+    }
+
+    function markerEl(s) {
+      const e = document.createElement('div');
+      e.className = 'mk';
+      e.style.cssText = 'width:38px;height:38px';
+      e.tabIndex = 0;
+      e.setAttribute('role', 'button');
+      e.setAttribute('aria-label', `D${s.day + 1}-${s.n} ${s.name}`);
+      const c = P.color === 'type' ? TC[s.type] : C[s.day];
+      const pinClass = P.marker === 'square' ? 'square' : P.marker === 'drop' ? 'drop' : P.marker === 'flag' ? 'flag' : '';
+      e.innerHTML = `<div class="pin ${pinClass}" style="--c:${c};--d:${C[s.day]}">${P.marker === 'icon' ? `<em>${IC[s.type]}</em><b>${s.day + 1}-${s.n}</b>` : `${s.day + 1}-${s.n}`}</div>`;
+      if (P.labels) e.title = s.name;
+      e.onmouseenter = () => highlight(s.id, true);
+      e.onmouseleave = () => highlight(s.id, false);
+      e.onkeydown = ev => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          select(s.id, false);
+        }
+      };
+      return e;
+    }
+
+    function popup(s) {
+      return `
+        <div style="font-size:14px">
+          <strong>${esc(s.name)}</strong><br>
+          <small style="color:#64748b">${esc(s.address)}</small><br>
+          <div style="margin:4px 0">
+            ${s.amenities.map(a => `<span class="amenity-tag">${esc(a)}</span>`).join('')}
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px">
+            <a target="_blank" rel="noopener" href="${dir(s)}" style="color:#0284c7;font-weight:700">🧭 導航</a> · 
+            <a target="_blank" rel="noopener" href="${osm(s)}" style="color:#059669;font-weight:600">🗺️ OSM</a> · 
+            <a target="_blank" rel="noopener" href="${nlscMap(s)}" style="color:#b45309;font-weight:600">🇹🇼 NLSC</a> · 
+            <a target="_blank" rel="noopener" href="${gm(s)}" style="color:#4f46e5;font-weight:600">Google</a>
+          </div>
+        </div>
+      `;
+    }
+
+    class View {
+      constructor(page, host) {
+        this.page = page;
+        this.host = $(host);
+        this.signature = '';
+        this.busy = false;
+        this.markers = {};
+        this.map = null;
+      }
+      visible() { return S.page === this.page; }
+      sig() { return [P.engine, P.base, P.gkey, P.mkey].join('|'); }
+      async ensure() {
+        if (!this.visible()) return;
+        if (this.signature === this.sig() && this.map) {
+          this.resize();
+          return;
+        }
+        if (this.busy) { this.pending = true; return; }
+        this.busy = true;
+        this.pending = false;
+        const sig = this.sig();
+        this.signature = sig;
+        this.destroy();
+
+        const canvas = document.createElement('div');
+        canvas.className = 'canvas';
+        this.host.replaceChildren(canvas);
+        const loading = document.createElement('div');
+        loading.className = 'mapMessage';
+        loading.innerHTML = '<div><span>🌐 正在載入地圖圖資...</span></div>';
+        this.host.appendChild(loading);
+
+        try {
+          await this.init(canvas);
+          if (sig !== this.sig()) return;
+          loading.remove();
+          this.draw();
+          this.fit();
+        } catch (e) {
+          loading.innerHTML = `<div><span style="color:#b91c1c;font-weight:600">⚠️ 地圖載入異常：${esc(e.message)}</span><br><button id="recoverBtn" style="margin-top:10px">改用開源 Leaflet ＋ 臺灣通用圖資</button></div>`;
+          loading.querySelector('#recoverBtn').onclick = () => {
+            P.engine = 'leaflet';
+            P.base = 'emap';
+            save();
+            this.signature = '';
+            renderBars();
+            this.ensure();
+          };
+          this.signature = '';
+        } finally {
+          this.busy = false;
+          if (this.pending || sig !== this.sig()) {
+            this.signature = '';
+            this.ensure();
+          }
+        }
+      }
+      destroy() {
+        try {
+          if (this.kind === 'lf') this.map?.remove();
+          else if (this.kind === 'ol') this.map?.setTarget(null);
+          else if (this.kind === 'ml') this.map?.remove();
+          else if (this.kind === 'g') this.gms?.forEach(m => m.setMap(null));
+        } catch (e) {}
+        this.map = null;
+        this.markers = {};
+        this.lines = [];
+        this.ovs = [];
+      }
+      async init(canvas) {
+        const b = bases[P.base] || bases.emap;
+        if (P.engine === 'google' && !P.gkey) {
+          this.kind = 'embed';
+          const f = document.createElement('iframe');
+          f.title = 'Google簡易內嵌地圖';
+          f.referrerPolicy = 'no-referrer-when-downgrade';
+          f.allowFullscreen = true;
+          canvas.appendChild(f);
+          this.map = f;
+          return;
+        }
+        if (P.engine === 'google') {
+          if (!window.google?.maps) {
+            window.__yinggeGoogle = () => {};
+            await script(`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(P.gkey)}&loading=async&callback=__yinggeGoogle&language=zh-TW`);
+          }
+          this.kind = 'g';
+          this.map = new google.maps.Map(canvas, { center: { lat: 23.8, lng: 120.8 }, zoom: 8, mapTypeId: 'roadmap', streetViewControl: false });
+          this.iw = new google.maps.InfoWindow();
+          return;
+        }
+
+        await lib(P.engine);
+
+        if (P.engine === 'leaflet') {
+          this.kind = 'lf';
+          this.map = L.map(canvas, { scrollWheelZoom: false, touchZoom: true }).setView([23.8, 120.8], 8);
+          L.tileLayer(b.u, { maxZoom: 19, maxNativeZoom: b.max, attribution: b.a }).addTo(this.map);
+          L.control.scale({ imperial: false }).addTo(this.map);
+          this.layer = L.layerGroup().addTo(this.map);
+        } else if (P.engine === 'ol') {
+          this.kind = 'ol';
+          this.map = new ol.Map({
+            target: canvas,
+            layers: [new ol.layer.Tile({ source: new ol.source.XYZ({ url: b.u, maxZoom: b.max, attributions: b.a }) })],
+            view: new ol.View({ center: ol.proj.fromLonLat([120.8, 23.8]), zoom: 8 })
+          });
+          this.vs = new ol.source.Vector();
+          this.map.addLayer(new ol.layer.Vector({
+            source: this.vs,
+            style: f => [
+              new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#fff', width: 8 }) }),
+              new ol.style.Style({ stroke: new ol.style.Stroke({ color: f.get('color'), width: 4, lineDash: P.lineStyle === 'dash' ? [8, 7] : undefined }) })
+            ]
+          }));
+          this.popEl = document.createElement('div');
+          this.popEl.className = 'pop';
+          this.pop = new ol.Overlay({ element: this.popEl, positioning: 'bottom-center', offset: [0, -20], stopEvent: true });
+          this.map.addOverlay(this.pop);
+        } else if (P.engine === 'ml' || P.engine === 'map8') {
+          this.kind = 'ml';
+          const isMap8 = P.engine === 'map8';
+          const style = (isMap8 && P.mkey) 
+            ? `https://api.map8.zone/styles/go-life-maps-tw-style-std/style.json?key=${encodeURIComponent(P.mkey)}`
+            : {
+                version: 8,
+                sources: { base: { type: 'raster', tiles: [b.u], tileSize: 256, maxzoom: b.max, attribution: b.a } },
+                layers: [{ id: 'base', type: 'raster', source: 'base' }]
+              };
+
+          this.map = new maplibregl.Map({
+            container: canvas,
+            style,
+            center: [120.8, 23.8],
+            zoom: 7.5,
+            transformRequest: url => {
+              if (isMap8 && url.includes('api.map8.zone') && !url.includes('key=')) {
+                return { url: url + (url.includes('?') ? '&' : '?') + 'key=' + encodeURIComponent(P.mkey) };
+              }
+              return { url };
+            }
+          });
+          this.map.addControl(new maplibregl.NavigationControl());
+          this.map.addControl(new maplibregl.ScaleControl());
+          this.map.on('load', () => this.draw());
+        }
+      }
+      resize() {
+        if (this.kind === 'lf') this.map?.invalidateSize();
+        else if (this.kind === 'ol') this.map?.updateSize();
+        else if (this.kind === 'ml') this.map?.resize();
+      }
+      draw() {
+        if (!this.map) return;
+        const arr = list(this.page);
+        if (this.kind === 'embed') {
+          const s = arr.find(s => s.id === S.sel) || arr[0];
+          this.map.src = 'https://maps.google.com/maps?output=embed&hl=zh-TW&z=' + (S.sel ? 15 : 9) + '&q=' + encodeURIComponent(s ? s.name + ' ' + s.address : 'Taiwan');
+          return;
+        }
+
+        if (this.kind === 'lf') this.layer.clearLayers();
+        if (this.kind === 'ol') {
+          this.ovs.forEach(o => this.map.removeOverlay(o));
+          this.ovs = [];
+          this.vs.clear();
+          this.pop.setPosition(undefined);
+        }
+        if (this.kind === 'ml') {
+          this.mlmarkers?.forEach(m => m.remove());
+          this.mlmarkers = [];
+          if (this.map.getLayer('routes')) this.map.removeLayer('routes');
+          if (this.map.getSource('routes')) this.map.removeSource('routes');
+        }
+        if (this.kind === 'g') {
+          this.gms?.forEach(m => m.setMap(null));
+          this.gms = [];
+          this.lines?.forEach(m => m.setMap(null));
+          this.lines = [];
+        }
+        this.markers = {};
+
+        const routes = [0, 1, 2].map(d => ({
+          day: d,
+          points: arr.filter(s => s.day === d).map(coord)
+        })).filter(r => r.points.length > 1);
+
+        if (S.routes) {
+          for (const r of routes) {
+            const isDash = P.lineStyle === 'dash';
+            const isGlow = P.lineStyle === 'glow';
+            if (this.kind === 'lf') {
+              L.polyline(r.points, { color: isGlow ? C[r.day] : '#fff', weight: isGlow ? 10 : 8, opacity: isGlow ? 0.35 : 1, interactive: false }).addTo(this.layer);
+              L.polyline(r.points, { color: C[r.day], weight: isGlow ? 5 : 4, dashArray: isDash ? '8 7' : undefined, interactive: false }).addTo(this.layer);
+            }
+            if (this.kind === 'ol') {
+              const f = new ol.Feature(new ol.geom.LineString(r.points.map(p => ol.proj.fromLonLat([p[1], p[0]]))));
+              f.set('color', C[r.day]);
+              this.vs.addFeature(f);
+            }
+            if (this.kind === 'g') {
+              this.lines.push(new google.maps.Polyline({
+                path: r.points.map(p => ({ lat: p[0], lng: p[1] })),
+                strokeColor: C[r.day],
+                strokeWeight: isGlow ? 6 : 4,
+                strokeOpacity: 0.9,
+                map: this.map
+              }));
+            }
+          }
+        }
+
+        if (this.kind === 'ml' && this.map.isStyleLoaded() && S.routes) {
+          this.map.addSource('routes', {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: routes.map(r => ({
+                type: 'Feature',
+                properties: { color: C[r.day] },
+                geometry: { type: 'LineString', coordinates: r.points.map(p => [p[1], p[0]]) }
+              }))
+            }
+          });
+          this.map.addLayer({
+            id: 'routes',
+            type: 'line',
+            source: 'routes',
+            paint: {
+              'line-color': ['get', 'color'],
+              'line-width': P.lineStyle === 'glow' ? 6 : 4,
+              ...(P.lineStyle === 'dash' ? { 'line-dasharray': [2, 1.5] } : {})
+            }
+          });
+        }
+
+        for (const s of arr) {
+          const p = coord(s);
+          if (this.kind === 'lf') {
+            const e = markerEl(s);
+            const m = L.marker(p, {
+              title: s.name,
+              icon: L.divIcon({ className: 'mk', html: e.innerHTML, iconSize: [38, 38], iconAnchor: [19, 19] })
+            }).addTo(this.layer).bindPopup(popup(s));
+            if (P.labels) m.bindTooltip(esc(s.name));
+            m.on('click', () => select(s.id, false));
+            this.markers[s.id] = { m, e: m.getElement() };
+          } else if (this.kind === 'ol') {
+            const e = markerEl(s);
+            e.onclick = () => select(s.id, false);
+            const o = new ol.Overlay({
+              element: e,
+              position: ol.proj.fromLonLat([p[1], p[0]]),
+              positioning: 'center-center',
+              stopEvent: true
+            });
+            this.map.addOverlay(o);
+            this.ovs.push(o);
+            this.markers[s.id] = { e, m: o };
+          } else if (this.kind === 'ml') {
+            const e = markerEl(s);
+            e.onclick = ev => { ev.stopPropagation(); select(s.id, false); };
+            const m = new maplibregl.Marker({ element: e, anchor: 'center' }).setLngLat([p[1], p[0]]).addTo(this.map);
+            this.mlmarkers.push(m);
+            this.markers[s.id] = { e, m };
+          } else if (this.kind === 'g') {
+            const m = new google.maps.Marker({
+              position: { lat: p[0], lng: p[1] },
+              map: this.map,
+              title: s.name,
+              label: { text: `${s.day + 1}-${s.n}`, color: '#fff', fontSize: '11px', fontWeight: 'bold' },
+              icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillColor: P.color === 'type' ? TC[s.type] : C[s.day],
+                fillOpacity: 1,
+                strokeColor: '#fff',
+                strokeWeight: 2.5,
+                scale: 18
+              }
+            });
+            m.addListener('click', () => select(s.id, false));
+            this.gms.push(m);
+            this.markers[s.id] = { m };
+          }
+        }
+        this.mark();
+      }
+      mark() {
+        for (const [id, o] of Object.entries(this.markers)) {
+          o.e?.classList.toggle('sel', id === S.sel);
+          if (this.kind === 'g') o.m.setZIndex(id === S.sel ? 1000 : 0);
+        }
+      }
+      select(s, fly) {
+        const o = this.markers[s.id];
+        const p = coord(s);
+        this.mark();
+        if (this.kind === 'embed') { this.draw(); return; }
+        if (!o) return;
+
+        if (this.kind === 'lf') {
+          if (fly) this.map.setView(p, Math.max(this.map.getZoom(), 13), { animate: !P.motion });
+          o.m.openPopup();
+        }
+        if (this.kind === 'ol') {
+          if (fly) this.map.getView().animate({ center: ol.proj.fromLonLat([p[1], p[0]]), zoom: Math.max(13, this.map.getView().getZoom()), duration: P.motion ? 0 : 500 });
+          this.popEl.innerHTML = '<button aria-label="關閉" style="float:right;min-height:24px;padding:0 6px;margin-bottom:4px">✕</button>' + popup(s);
+          this.popEl.firstChild.onclick = () => this.pop.setPosition(undefined);
+          this.pop.setPosition(ol.proj.fromLonLat([p[1], p[0]]));
+        }
+        if (this.kind === 'ml') {
+          if (fly) this.map.flyTo({ center: [p[1], p[0]], zoom: Math.max(13, this.map.getZoom()), duration: P.motion ? 0 : 500 });
+          this.pp?.remove();
+          this.pp = new maplibregl.Popup({ offset: 20 }).setLngLat([p[1], p[0]]).setHTML(popup(s)).addTo(this.map);
+        }
+        if (this.kind === 'g') {
+          if (fly) {
+            this.map.panTo({ lat: p[0], lng: p[1] });
+            this.map.setZoom(Math.max(13, this.map.getZoom()));
+          }
+          this.iw.setContent(popup(s));
+          this.iw.open(this.map, o.m);
+        }
+      }
+      fit(island = false) {
+        const arr = list(this.page);
+        if (!this.map || !arr.length) return;
+        const pp = island ? [[21.85, 120.0], [25.3, 121.9]] : arr.map(coord);
+
+        if (this.kind === 'lf') this.map.fitBounds(pp, { padding: [40, 40], maxZoom: 13, animate: !P.motion });
+        if (this.kind === 'ol') this.map.getView().fit(ol.extent.boundingExtent(pp.map(p => ol.proj.fromLonLat([p[1], p[0]]))), { padding: [45, 45, 45, 45], maxZoom: 13, duration: P.motion ? 0 : 500 });
+        if (this.kind === 'ml') {
+          const b = new maplibregl.LngLatBounds();
+          pp.forEach(p => b.extend([p[1], p[0]]));
+          this.map.fitBounds(b, { padding: 45, maxZoom: 13, duration: P.motion ? 0 : 500 });
+        }
+        if (this.kind === 'g') {
+          const b = new google.maps.LatLngBounds();
+          pp.forEach(p => b.extend({ lat: p[0], lng: p[1] }));
+          this.map.fitBounds(b, 45);
+        }
+        if (this.kind === 'embed') this.draw();
+      }
+    }
+
+    views.overview = new View('overview', '#ovMap');
+    views.cal = new View('cal', '#calMap');
+    views.mapx = new View('mapx', '#mxMap');
+
+    function renderBars() {
+      $$('.mapbar').forEach(b => {
+        b.innerHTML = `
+          <div class="bar">
+            <label>圖資引擎：
+              <select class="engine">
+                ${Object.entries(engines).map(([k, n]) => `<option value="${k}">${n}</option>`).join('')}
+              </select>
+            </label>
+            <label>底圖底層：
+              <select class="base">
+                ${Object.entries(bases).map(([k, b]) => `<option value="${k}">${b.n}</option>`).join('')}
+              </select>
+            </label>
+            <button class="settingsBtn">⚙ 設定更多風格</button>
+          </div>
+        `;
+        b.querySelector('.engine').value = P.engine;
+        const bs = b.querySelector('.base');
+        bs.value = P.base;
+        bs.disabled = P.engine === 'google' || (P.engine === 'map8' && !!P.mkey);
+
+        b.querySelector('.engine').onchange = e => {
+          P.engine = e.target.value;
+          save();
+          renderBars();
+          views[S.page]?.ensure();
+        };
+        bs.onchange = e => {
+          P.base = e.target.value;
+          save();
+          renderBars();
+          views[S.page]?.ensure();
+        };
+        b.querySelector('.settingsBtn').onclick = () => go('settings');
+      });
+    }
+
+    function go(page) {
+      if (!allPages.includes(page)) page = 'overview';
+      S.page = page;
+      allPages.forEach(p => $('#' + p).hidden = p !== page);
+
+      $$('[data-page]').forEach(b => {
+        b.classList.toggle('active', b.dataset.page === page);
+        if (b.dataset.page === page) b.setAttribute('aria-current', 'page');
+        else b.removeAttribute('aria-current');
+      });
+
+      $('#more').hidden = true;
+      try { history.replaceState(null, '', '#' + page); } catch (e) {}
+      requestAnimationFrame(() => views[page]?.ensure());
+      scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    // Top Navigation Builder
+    allPages.forEach((p, i) => {
+      const b = document.createElement('button');
+      b.textContent = pageNames[i];
+      b.dataset.page = p;
+      b.onclick = () => go(p);
+      $('.top').appendChild(b);
+    });
+
+    // Mobile Bottom Navigation Builder
+    ['overview', 'cal', 'mapx', 'guide', 'more'].forEach((p, i) => {
+      const b = document.createElement('button');
+      b.innerHTML = `<span>${['🏝', '📅', '🗺', '🎒', '⋯'][i]}</span>${['全貌', '行程', '地圖', '行前', '更多'][i]}`;
+      if (p === 'more') {
+        b.onclick = () => { $('#more').hidden = false; $('#more button').focus(); };
+      } else {
+        b.dataset.page = p;
+        b.onclick = () => go(p);
+      }
+      $('.bottom').appendChild(b);
+    });
+
+    $$('#more [data-page]').forEach(b => b.onclick = () => go(b.dataset.page));
+    $('#closeMore').onclick = () => { $('#more').hidden = true; $('.bottom button:last-child').focus(); };
+    $('#more').onclick = e => { if (e.target === $('#more')) $('#closeMore').click(); };
+
+    document.addEventListener('keydown', e => {
+      if (!$('#more').hidden && e.key === 'Escape') $('#closeMore').click();
+    });
+
+    function day(d) {
+      S.day = d;
+      S.sel = null;
+      render();
+      for (const v of Object.values(views)) {
+        if (v.visible() && v.map) { v.draw(); v.fit(); }
+      }
+    }
+
+    function select(id, fly = true) {
+      const s = stops.find(s => s.id === id);
+      if (!s) return;
+      S.sel = id;
+      renderInfos();
+      renderList();
+      $$('tr[data-stop]').forEach(r => r.classList.toggle('selected', r.dataset.stop === id));
+      for (const v of Object.values(views)) {
+        if (v.visible() && v.map) v.select(s, fly);
+      }
+    }
+
+    function highlight(id, on) {
+      Object.values(views).forEach(v => {
+        const e = v.markers[id]?.e;
+        if (e) e.style.filter = on ? 'brightness(1.2)' : '';
+      });
+    }
+
+    function info(s) {
+      const speechText = `第${s.day + 1}天第${s.n}站，${s.name}。地址位於：${s.address}。電話：${s.phone || '街區景點，無統一電話'}。簡介：${s.note}。設施狀況：${s.amenities.join('，')}`;
+      return `
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <h3 style="margin:0">D${s.day + 1}-${s.n} ${esc(s.name)}</h3>
+          <button class="btn" onclick="speakText('${esc(speechText)}', '${esc(s.name)}', this.closest('.card') || this.parentElement)" style="min-height:36px;padding:4px 10px;font-size:12px;background:#eef6f3;color:#0f5132">🔊 朗讀此站</button>
+        </div>
+        <p style="margin:4px 0">📍 ${esc(s.address)}</p>
+        <p style="margin:4px 0">☎ ${s.phone ? `<a href="tel:${s.phone}" style="color:#059669;font-weight:700">${esc(s.phone)}</a>` : '<span class="muted">街區景點，無統一電話</span>'}</p>
+        <p class="muted" style="margin:4px 0">${esc(s.note)}</p>
+        <div style="margin:6px 0">
+          ${s.amenities.map(a => `<span class="amenity-tag">${esc(a)}</span>`).join('')}
+        </div>
+        <span class="badge" style="margin-top:4px">${status(s)}</span>
+        
+        <div style="margin-top:12px">
+          <strong style="font-size:13px;display:block;margin-bottom:6px;color:var(--green-dark)">🗺️ 開放地圖與外部導航一覽：</strong>
+          <div class="map-btn-group">
+            <a class="map-btn primary" href="${dir(s)}" target="_blank" rel="noopener">🧭 Google 導航</a>
+            <a class="map-btn" href="${osm(s)}" target="_blank" rel="noopener">🗺️ OpenStreetMap</a>
+            <a class="map-btn" href="${nlscMap(s)}" target="_blank" rel="noopener">🇹🇼 臺灣通用電子圖</a>
+            <a class="map-btn" href="${gm(s)}" target="_blank" rel="noopener">🌐 Google 地圖</a>
+            <a class="map-btn" href="${appleMap(s)}" target="_blank" rel="noopener">🍏 Apple 地圖</a>
+            <a class="map-btn" href="${bingMap(s)}" target="_blank" rel="noopener">📍 Bing 地圖</a>
+            <a class="map-btn" href="${geoUri(s)}">📱 原生導航 (Geo)</a>
+            <button class="map-btn" data-copy="${s.id}">📋 複製地址</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderInfos() {
+      const s = stops.find(s => s.id === S.sel);
+      for (const id of ['ovInfo', 'calInfo', 'mxInfo']) {
+        $('#' + id).innerHTML = s ? info(s) : '<p class="muted" style="text-align:center;padding:12px 0">👆 請於地圖或清單中點選任意據點，檢視詳細電話、地址、設施與語音導覽。</p>';
+      }
+      $$('[data-copy]').forEach(b => b.onclick = () => {
+        const item = stops.find(s => s.id === b.dataset.copy);
+        if (item) safeCopyText(item.address, `已複製：${item.name} 地址`);
+      });
+    }
+
+    function renderList() {
+      const p = $('#stopList');
+      p.innerHTML = '';
+      const a = list('mapx');
+      $('#count').textContent = `地點清單（${a.length} 站）`;
+      if (!a.length) {
+        p.innerHTML = '<p class="muted" style="padding:10px 0;text-align:center">查無符合搜尋條件的地點。</p>';
+        return;
+      }
+      a.forEach(s => {
+        const b = document.createElement('button');
+        b.className = 'stop' + (S.sel === s.id ? ' selected' : '');
+        b.setAttribute('aria-pressed', String(S.sel === s.id));
+        b.innerHTML = `
+          <span class="num" style="--c:${C[s.day]}">${s.day + 1}-${s.n}</span>
+          <span style="min-width:0;flex:1">
+            <span style="display:block;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(s.name)}</span>
+            <small>${esc(s.type)} ｜ ${esc(s.address)}</small>
+            <span style="display:block;margin-top:2px">${s.amenities.slice(0, 2).map(am => `<span class="amenity-tag" style="font-size:10.5px">${esc(am)}</span>`).join('')}</span>
+          </span>
+        `;
+        b.onclick = () => select(s.id);
+        p.appendChild(b);
+      });
+    }
+
+    function summary(d) {
+      return `
+        <article style="--c:${C[d]}">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="color:${C[d]};margin:0">D${d + 1}・${date(d)} ${titles[d]}</h3>
+            <button class="btn" style="min-height:30px;padding:2px 8px;font-size:11.5px" onclick="speakText('第${d + 1}天行程：${area[d]}。主要停靠：${stops.filter(s => s.day === d).map(s => s.name).join('，')}。', 'D${d + 1}行程', this.closest('article'))">🔊 朗讀行程</button>
+          </div>
+          <p class="muted" style="margin:4px 0">${area[d]}</p>
+          <p style="font-size:13.5px">${stops.filter(s => s.day === d).map(s => esc(s.name)).join(' ➔ ')}</p>
+          <p style="font-size:13px;color:#475569">餐飲住宿：${d === 0 ? '嘉義皇品國際酒店（晚宴／夜宿）' : d === 1 ? '台糖長榮酒店（晚宴／夜宿）' : '市民農園休閒餐廳（慶功晚宴）'}</p>
+        </article>
+      `;
+    }
+
+    function render() {
+      $$('.days').forEach(p => {
+        p.innerHTML = '';
+        [-1, 0, 1, 2].forEach(d => {
+          const b = document.createElement('button');
+          b.textContent = d < 0 ? '三天全覽' : `D${d + 1} (${date(d).split(' ')[0]})`;
+          b.classList.toggle('active', S.day === d);
+          b.setAttribute('aria-pressed', String(S.day === d));
+          b.onclick = () => day(d);
+          p.appendChild(b);
+        });
+      });
+
+      $('#routeCards').innerHTML = [0, 1, 2].map(d => `
+        <div class="daycard" style="--c:${C[d]}">
+          <h3 style="color:${C[d]}">第 ${d + 1} 天 ｜ ${titles[d]}</h3>
+          <p class="muted">${area[d]}</p>
+          <button data-day="${d}">🔍 查看本日行程</button>
+        </div>
+      `).join('');
+      $$('[data-day]').forEach(b => b.onclick = () => day(+b.dataset.day));
+
+      $('#allTimeline').innerHTML = [0, 1, 2].map(d => `<div class="timeline">${summary(d)}</div>`).join('');
+
+      $('#dayTimeline').innerHTML = (S.day < 0 ? [0, 1, 2] : [S.day]).map(d =>
+        summary(d) + stops.filter(s => s.day === d).map(s => `
+          <article style="--c:${C[d]}" id="timeline-art-${s.id}">
+            <span class="badge">${esc(s.type)}</span>
+            <h3 style="margin-top:4px">${s.n}. ${esc(s.name)}</h3>
+            <p style="margin:2px 0;font-size:13px">${esc(s.address)}</p>
+            <div style="margin:4px 0">${s.amenities.map(a => `<span class="amenity-tag">${esc(a)}</span>`).join('')}</div>
+            <div class="bar" style="margin-top:6px">
+              <button data-calstop="${s.id}" style="min-height:36px;font-size:12.5px">🎯 地圖標註</button>
+              <button class="btn" style="min-height:36px;font-size:12.5px" onclick="speakText('${esc(s.name)}，${esc(s.address)}。設施狀況：${s.amenities.join('，')}', '${esc(s.name)}', document.getElementById('timeline-art-${s.id}'))">🔊 朗讀</button>
+            </div>
+          </article>
+        `).join('')
+      ).join('');
+      $$('[data-calstop]').forEach(b => b.onclick = () => select(b.dataset.calstop));
+
+      $('#rows').innerHTML = list('table').map(s => `
+        <tr data-stop="${s.id}">
+          <td data-label="天數/站序"><span class="badge" style="background:${C[s.day]};color:#fff">D${s.day + 1}-${s.n}</span></td>
+          <td data-label="地點名稱"><strong>${esc(s.name)}</strong><br><small class="badge">${esc(s.type)}</small></td>
+          <td data-label="地址">${esc(s.address)}</td>
+          <td data-label="連絡電話">${s.phone ? `<a href="tel:${s.phone}" style="color:#059669;font-weight:700" onclick="event.stopPropagation()">${esc(s.phone)}</a>` : '<span class="muted">—</span>'}</td>
+          <td data-label="民生公廁與無障礙">
+            ${s.amenities.map(a => `<span class="amenity-tag">${esc(a)}</span>`).join('')}
+            <div style="margin-top:4px"><small class="muted">${esc(s.note)}</small></div>
+          </td>
+          <td data-label="開放地圖與導航" onclick="event.stopPropagation()">
+            <div class="map-btn-group">
+              <a class="map-btn primary" target="_blank" rel="noopener" href="${dir(s)}" title="Google 路線規劃">🧭 導航</a>
+              <a class="map-btn" target="_blank" rel="noopener" href="${osm(s)}" title="OpenStreetMap 開放街圖">🗺️ OSM</a>
+              <a class="map-btn" target="_blank" rel="noopener" href="${nlscMap(s)}" title="內政部國土測繪圖資">🇹🇼 NLSC</a>
+              <a class="map-btn" target="_blank" rel="noopener" href="${gm(s)}" title="Google 地圖搜尋">🌐 Google</a>
+              <a class="map-btn" target="_blank" rel="noopener" href="${appleMap(s)}" title="Apple 地圖">🍏 Apple</a>
+              <a class="map-btn" target="_blank" rel="noopener" href="${geoUri(s)}" title="喚起手機內建地圖 APP">📱 Geo</a>
+              <button class="map-btn" onclick="safeCopyText('${esc(s.address)}', '已複製地址')">📋 複製</button>
+              <button class="map-btn" onclick="speakText('${esc(s.name)}，${esc(s.address)}', '${esc(s.name)}', this.closest('tr'))">🔊 朗讀</button>
+            </div>
+            <!-- Print QR code -->
+            <img class="print-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=65x65&data=${encodeURIComponent(dir(s))}" alt="導航QR">
+          </td>
+        </tr>
+      `).join('');
+
+      $$('tr[data-stop]').forEach(r => r.onclick = e => {
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        S.query = '';
+        S.type = '';
+        $('#search').value = '';
+        $('#type').value = '';
+        go('mapx');
+        const id = r.dataset.stop;
+        select(id, false);
+        setTimeout(() => { if (views.mapx.map) select(id, true); }, 200);
+      });
+
+      renderInfos();
+      renderList();
+      $$('.legend').forEach(p => p.innerHTML = C.map((c, i) => `<span><i style="background:${c}"></i>第 ${i + 1} 天 (${date(i).split(' ')[0]})</span>`).join(''));
+    }
+
+    // Step Navigation
+    $$('[data-fit]').forEach(b => b.onclick = () => views[b.dataset.fit].fit());
+    $('#island').onclick = () => views.overview.fit(true);
+    $$('[data-step]').forEach(b => b.onclick = () => {
+      const a = list('cal');
+      let i = a.findIndex(s => s.id === S.sel);
+      i = i < 0 ? (+b.dataset.step > 0 ? 0 : a.length - 1) : (i + (+b.dataset.step) + a.length) % a.length;
+      if (a[i]) select(a[i].id);
+    });
+
+    // Map Fullscreen Button Handling
+    $$('[data-fullscreen]').forEach(btn => {
+      btn.onclick = () => {
+        const targetId = btn.dataset.fullscreen;
+        const target = $('#' + targetId);
+        if (!target) return;
+        if (!document.fullscreenElement) {
+          target.requestFullscreen().then(() => {
+            btn.textContent = '✕ 結束全螢幕';
+            setTimeout(() => { Object.values(views).forEach(v => v.resize()); }, 150);
+          }).catch(() => toast('無法進入全螢幕模式'));
+        } else {
+          document.exitFullscreen().then(() => {
+            btn.textContent = '⛶ 地圖全螢幕';
+            setTimeout(() => { Object.values(views).forEach(v => v.resize()); }, 150);
+          });
+        }
+      };
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        $$('[data-fullscreen]').forEach(b => b.textContent = '⛶ 地圖全螢幕');
+      }
+      setTimeout(() => { Object.values(views).forEach(v => v.resize()); }, 200);
+    });
+
+    $$('.routeToggle').forEach(c => c.onchange = () => {
+      S.routes = c.checked;
+      Object.values(views).forEach(v => v.visible() && v.map && v.draw());
+    });
+
+    $('#fold').onclick = () => {
+      const c = $('#listPanel').classList.toggle('collapsed');
+      $('#fold').textContent = c ? '展開清單' : '收合清單';
+      $('#fold').setAttribute('aria-expanded', String(!c));
+    };
+
+    Object.keys(TC).forEach(t => {
+      const o = document.createElement('option');
+      o.value = o.textContent = t;
+      $('#type').appendChild(o);
+    });
+
+    function filter() {
+      S.query = $('#search').value.trim().toLowerCase();
+      S.type = $('#type').value;
+      renderList();
+      if (views.mapx.map) views.mapx.draw();
+    }
+    $('#search').oninput = filter;
+    $('#type').onchange = filter;
+
+    $('#batch').value = P.batch;
+    $('#batch').onchange = e => {
+      P.batch = +e.target.value;
+      save();
+      render();
+    };
+
+    // Geolocation
+    $('#locate').onclick = () => {
+      if (!navigator.geolocation) return toast('瀏覽器未支援定位功能');
+      toast('正在取得目前位置...');
+      navigator.geolocation.getCurrentPosition(
+        p => {
+          const v = views.mapx;
+          if (!v.map) return;
+          const lat = p.coords.latitude;
+          const lng = p.coords.longitude;
+          if (v.kind === 'lf') {
+            v.me && v.map.removeLayer(v.me);
+            v.me = L.circleMarker([lat, lng], { color: '#1565c0', radius: 8, fillOpacity: 0.9 }).addTo(v.map);
+            v.map.setView([lat, lng], 14);
+          } else if (v.kind === 'ol') {
+            v.map.getView().setCenter(ol.proj.fromLonLat([lng, lat]));
+            v.map.getView().setZoom(14);
+          } else if (v.kind === 'ml') {
+            v.map.flyTo({ center: [lng, lat], zoom: 14 });
+          } else if (v.kind === 'g') {
+            v.map.setCenter({ lat, lng });
+            v.map.setZoom(14);
+          }
+          toast('已定位目前位置（僅本次展示，不予儲存）');
+        },
+        () => toast('無法獲取定位，請確認已啟用定位權限與 HTTPS'),
+        { timeout: 10000 }
+      );
+    };
+
+    // Exports
+    function downloadBlob(text, name, type) {
+      const u = URL.createObjectURL(new Blob([text], { type }));
+      const a = document.createElement('a');
+      a.href = u;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(u);
+      }, 1500);
+    }
+
+    $('#csv').onclick = () => {
+      const a = [
+        ['天數', '站序', '地點名稱', '地址', '電話', '民生設施', '緯度', '經度', '資料狀態', '備註說明'],
+        ...stops.map(s => [s.day + 1, s.n, s.name, s.address, s.phone, s.amenities.join('; '), ...coord(s), status(s), s.note])
+      ];
+      downloadBlob('\uFEFF' + a.map(r => r.map(x => '"' + String(x).replace(/"/g, '""') + '"').join(',')).join('\r\n'), '鶯歌農會觀摩行程表_V7.csv', 'text/csv;charset=utf-8');
+      toast('已匯出 CSV 行程表');
+    };
+
+    const icesc = t => String(t || '').replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/;/g, '\\;').replace(/,/g, '\\,');
+    $('#ics').onclick = () => {
+      const days = P.batch === 0 ? ['20261027', '20261028', '20261029', '20261030'] : ['20261102', '20261103', '20261104', '20261105'];
+      let a = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Yingge Tour//V7//ZH', 'CALSCALE:GREGORIAN'];
+      for (let d = 0; d < 3; d++) {
+        a.push(
+          'BEGIN:VEVENT',
+          `UID:yingge-tour-115-b${P.batch}-d${d}@yingge-fa.org.tw`,
+          `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}`,
+          `DTSTART;VALUE=DATE:${days[d]}`,
+          `DTEND;VALUE=DATE:${days[d + 1]}`,
+          `SUMMARY:${icesc('鶯歌農會觀摩 D' + (d + 1) + ' ' + titles[d])}`,
+          `DESCRIPTION:${icesc(stops.filter(s => s.day === d).map(s => s.name + ' ｜ ' + s.address + ' (' + s.amenities.join(',') + ')').join('\n') + '\n出發時間依農會各里通知為準。')}`,
+          `LOCATION:${icesc(area[d])}`,
+          'END:VEVENT'
+        );
+      }
+      a.push('END:VCALENDAR');
+      downloadBlob(a.join('\r\n') + '\r\n', '鶯歌農會觀摩活動.ics', 'text/calendar;charset=utf-8');
+      toast('已匯出手機行事曆 (.ics)');
+    };
+
+    // Settings & Personalization
+    function refreshMaps() {
+      Object.values(views).forEach(v => { if (v.visible() && v.map) v.draw(); });
+    }
+
+    function setOutdoorMode(isOutdoor) {
+      P.outdoor = !!isOutdoor;
+      save();
+      document.body.classList.toggle('outdoor', P.outdoor);
+      $('#toggleOutdoor').textContent = P.outdoor ? '🌲 標準配色' : '☀️ 戶外強光';
+      $('#contrastSelect').value = P.outdoor ? 'outdoor' : 'normal';
+      toast(P.outdoor ? '已切換為戶外強光高對比模式' : '已還原為標準清新配色');
+    }
+
+    $('#toggleOutdoor').onclick = () => setOutdoorMode(!P.outdoor);
+    $('#contrastSelect').onchange = e => setOutdoorMode(e.target.value === 'outdoor');
+    if (P.outdoor) document.body.classList.add('outdoor');
+
+    for (const k of ['font', 'marker', 'lineStyle', 'color']) {
+      $('#' + k).value = P[k];
+      $('#' + k).onchange = e => {
+        P[k] = k === 'font' ? +e.target.value : e.target.value;
+        save();
+        document.body.style.fontSize = P.font + 'px';
+        refreshMaps();
+      };
+    }
+    document.body.style.fontSize = P.font + 'px';
+
+    for (const k of ['motion', 'labels']) {
+      $('#' + k).checked = P[k];
+      $('#' + k).onchange = e => {
+        P[k] = e.target.checked;
+        save();
+        refreshMaps();
+      };
+    }
+
+    $('#gkey').value = P.gkey;
+    $('#mkey').value = P.mkey;
+    $('#saveKeys').onclick = () => {
+      P.gkey = $('#gkey').value.trim();
+      P.mkey = $('#mkey').value.trim();
+      save();
+      location.reload();
+    };
+    $('#clearKeys').onclick = () => {
+      P.gkey = P.mkey = '';
+      save();
+      location.reload();
+    };
+
+    // Coordinate Editor
+    stops.forEach(s => {
+      const o = document.createElement('option');
+      o.value = s.id;
+      o.textContent = `D${s.day + 1}-${s.n} ${s.name}`;
+      $('#editStop').appendChild(o);
+    });
+
+    function edit() {
+      const s = stops.find(s => s.id === $('#editStop').value);
+      const p = coord(s);
+      $('#lat').value = p[0];
+      $('#lng').value = p[1];
+      $('#verified').checked = !!P.coords[s.id]?.verified;
+    }
+    $('#editStop').onchange = edit;
+    edit();
+
+    $('#saveCoord').onclick = () => {
+      const a = +$('#lat').value;
+      const b = +$('#lng').value;
+      if (!Number.isFinite(a) || !Number.isFinite(b) || a < 20 || a > 27 || b < 118 || b > 124) {
+        toast('請輸入台灣範圍內之有效經緯度座標');
+        return;
+      }
+      P.coords[$('#editStop').value] = { lat: a, lng: b, verified: $('#verified').checked };
+      save();
+      render();
+      refreshMaps();
+      toast('已儲存自訂座標');
+    };
+
+    $('#resetCoord').onclick = () => {
+      delete P.coords[$('#editStop').value];
+      save();
+      edit();
+      render();
+      refreshMaps();
+      toast('已還原為原廠設定座標');
+    };
+
+    $('#backup').onclick = () => {
+      const o = structuredClone(P);
+      if (!$('#includeKeys').checked) { delete o.gkey; delete o.mkey; }
+      downloadBlob(JSON.stringify({ app: 'yingge-v7', version: APP_VERSION, preferences: o }, null, 2), 'yingge-tour-settings.json', 'application/json');
+      toast('已匯出備份檔案');
+    };
+
+    $('#import').onclick = () => $('#file').click();
+    $('#file').onchange = async e => {
+      try {
+        const o = JSON.parse(await e.target.files[0].text());
+        if (o.app !== 'yingge-v7' || !o.preferences) throw Error('非相容之設定備份檔');
+        const q = o.preferences;
+
+        const ok = await customConfirm('匯入將覆蓋本機目前的自訂偏好與座標，確定繼續？', '匯入設定');
+        if (!ok) return;
+
+        const allowed = Object.keys(defaults);
+        for (const k of allowed) {
+          if (q[k] !== undefined) P[k] = q[k];
+        }
+        save();
+        location.reload();
+      } catch (err) {
+        toast('匯入失敗：' + err.message);
+      }
+    };
+
+    $('#reset').onclick = async () => {
+      const ok = await customConfirm('將清除本機所有偏好、金鑰、校核座標及行前行李清單。確定重設？', '重設本版資料');
+      if (ok) {
+        localStorage.removeItem(KEY);
+        location.reload();
+      }
+    };
+
+    // Update Checker
+    $('#updateURL').value = P.updateURL;
+    $('#checkUpdate').onclick = async () => {
+      const msg = $('#updateResult');
+      try {
+        const url = new URL($('#updateURL').value.trim() || location.href);
+        P.updateURL = url.href;
+        save();
+        msg.textContent = '連線檢查中...';
+        const r = await fetch(url.href, { cache: 'no-store', signal: AbortSignal.timeout(10000) });
+        if (!r.ok) throw Error('HTTP 狀態碼 ' + r.status);
+        const text = await r.text();
+        const v = text.match(/const APP_VERSION\s*=\s*'([0-9.]+)'/);
+        if (!v) throw Error('來源檔案中未包含有效之版本號');
+        msg.innerHTML = `檢查完成！目前版本：<strong>${APP_VERSION}</strong> ｜ 來源版本：<strong>${v[1]}</strong>`;
+      } catch (e) {
+        msg.textContent = '無法連線檢查：' + e.message + '（可能受到 CORS 跨網域存取限制）';
+      }
+    };
+
+    // ============================================================
+    // 🎒 個人行前行李檢查清單 (SVG 圖示與進度)
+    // ============================================================
+    const defaultPackItems = [
+      {
+        id: 'id_card',
+        cat: '必備證件',
+        name: '國民身分證正本',
+        desc: '遊覽車上車身分查驗、防冒名頂替必備',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2.5"/><line x1="14" y1="9" x2="18" y2="9"/><line x1="14" y1="13" x2="18" y2="13"/><path d="M5 18a4 4 0 0 1 8 0"/></svg>`
+      },
+      {
+        id: 'nhi_card',
+        cat: '必備證件',
+        name: '全民健保卡',
+        desc: '隨身醫療看診、外出緊急醫療必備',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>`
+      },
+      {
+        id: 'receipt',
+        cat: '必備證件',
+        name: '農會繳費收據',
+        desc: '報名臨櫃繳費憑據與備用核銷文件',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 3 2V2l-3 2-3-2-3 2-3-2-3 2-3-2z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>`
+      },
+      {
+        id: 'medicine',
+        cat: '健康醫藥',
+        name: '個人隨身常備藥品',
+        desc: '高血壓降血糖藥、暈車藥、腸胃藥、痠痛貼布',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 4.5 9 9a4.95 4.95 0 0 1-7 7l-9-9a4.95 4.95 0 0 1 7-7Z"/><line x1="8.5" y1="12.5" x2="15.5" y2="5.5"/></svg>`
+      },
+      {
+        id: 'water_bottle',
+        cat: '隨身日用',
+        name: '個人水壺／保溫環保杯',
+        desc: '遊覽車與景點裝水補給，隨時補充水分',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8v3H8zm2 3v2h4V5zm-2 4h8a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-9a2 2 0 0 1 2-2z"/><line x1="6" y1="14" x2="18" y2="14"/></svg>`
+      },
+      {
+        id: 'clothes',
+        cat: '衣物防護',
+        name: '換洗衣物（3套）與防風薄外套',
+        desc: '飯店夜宿換洗；車內及博物館冷氣房防受涼',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.5a2 2 0 0 0 1.63 1.64l2.51.42V21a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9.75l2.51-.42a2 2 0 0 0 1.63-1.64l.58-3.5a2 2 0 0 0-1.34-2.23z"/></svg>`
+      },
+      {
+        id: 'umbrella',
+        cat: '衣物防護',
+        name: '晴雨兩用傘／遮陽帽',
+        desc: '南部艷陽高照，防曬遮陽與突發陣雨預備',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2m0 0a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9zm0 9v7a3 3 0 0 0 6 0"/></svg>`
+      },
+      {
+        id: 'charger',
+        cat: '電子裝備',
+        name: '手機充電器與行動電源',
+        desc: '維持拍照打卡與與家屬通訊電力充足',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="12" rx="2"/><line x1="20" y1="11" x2="20" y2="15"/><line x1="6" y1="11" x2="6" y2="15"/><line x1="10" y1="11" x2="10" y2="15"/></svg>`
+      },
+      {
+        id: 'glasses_cane',
+        cat: '個人輔具',
+        name: '老花眼鏡／隨身健走杖',
+        desc: '閱讀地圖說明、老街散策或步道行進輔助',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="14" r="4"/><circle cx="18" cy="14" r="4"/><path d="M10 14h4m-8-4 2-5m8 5-2-5"/></svg>`
+      },
+      {
+        id: 'toiletries',
+        cat: '生活清潔',
+        name: '個人盥洗包與濕紙巾',
+        desc: '環保旅宿備品、乾洗手、防蚊液與面紙',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M7 8V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`
+      }
+    ];
+
+    function renderChecklist() {
+      const container = $('#checklistGrid');
+      container.innerHTML = '';
+      
+      const allItems = [...defaultPackItems, ...P.customChecks];
+      let checkedCount = 0;
+
+      allItems.forEach((item) => {
+        const isChecked = !!P.checks[item.id];
+        if (isChecked) checkedCount++;
+
+        const card = document.createElement('div');
+        card.className = 'check-card' + (isChecked ? ' checked' : '');
+        card.tabIndex = 0;
+        card.setAttribute('role', 'checkbox');
+        card.setAttribute('aria-checked', String(isChecked));
+        card.setAttribute('id', `check-item-${item.id}`);
+        card.innerHTML = `
+          <div class="check-svg-icon">
+            ${item.svg || `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>`}
+          </div>
+          <div class="check-info">
+            <span class="check-category">${esc(item.cat || '自訂物品')}</span>
+            <span class="check-title">${esc(item.name)}</span>
+            <span class="check-desc">${esc(item.desc || '個人自訂攜帶備忘項目')}</span>
+          </div>
+          <div class="check-box-visual">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+        `;
+
+        const toggle = () => {
+          P.checks[item.id] = !P.checks[item.id];
+          save();
+          renderChecklist();
+        };
+
+        card.onclick = toggle;
+        card.onkeydown = e => {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            toggle();
+          }
+        };
+
+        container.appendChild(card);
+      });
+
+      const totalCount = allItems.length;
+      const pct = totalCount ? Math.round((checkedCount / totalCount) * 100) : 0;
+      $('#checkFill').style.width = pct + '%';
+      $('#checkStats').textContent = `已準備 ${checkedCount} / ${totalCount} 項 (${pct}%)`;
+
+      const msg = $('#checkEncourage');
+      if (pct === 100) {
+        msg.textContent = '🎉 太棒了！隨身行李已全數準備齊全，預祝旅途愉快順心！';
+        msg.style.color = '#059669';
+        msg.style.fontWeight = '700';
+      } else if (pct >= 50) {
+        msg.textContent = `👍 進度良好，還差 ${totalCount - checkedCount} 項即將準備完成！`;
+        msg.style.color = 'var(--text)';
+        msg.style.fontWeight = 'normal';
+      } else {
+        msg.textContent = '出發前請記得逐一核對，放進行李袋中更安心！';
+        msg.style.color = 'var(--muted)';
+        msg.style.fontWeight = 'normal';
+      }
+    }
+
+    $('#resetChecklist').onclick = async () => {
+      const ok = await customConfirm('確定要清除所有已勾選的行李準備狀態嗎？', '重設清單勾選');
+      if (ok) {
+        P.checks = {};
+        save();
+        renderChecklist();
+        toast('已重設所有行李勾選狀態');
+      }
+    };
+
+    $('#addCustomItemBtn').onclick = () => {
+      const input = $('#customItemInput');
+      const val = input.value.trim();
+      if (!val) {
+        toast('請先輸入自訂隨身物品名稱');
+        return;
+      }
+      const newItem = {
+        id: 'cust_' + Date.now(),
+        cat: '自訂隨身物品',
+        name: val,
+        desc: '個人自訂攜帶備忘項目',
+        svg: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`
+      };
+      P.customChecks.push(newItem);
+      save();
+      input.value = '';
+      renderChecklist();
+      toast(`已新增：「${val}」`);
+    };
+
+    // 行李清單智慧逐項高亮朗讀
+    $('#readChecklist').onclick = () => {
+      const allItems = [...defaultPackItems, ...P.customChecks];
+      const unchecked = allItems.filter(i => !P.checks[i.id]);
+      const queue = [];
+
+      if (!unchecked.length) {
+        queue.push({
+          text: '恭喜您！所有隨身行李已經全數準備齊全，隨時可以快樂出發囉！',
+          el: $('#cardChecklist')
+        });
+      } else {
+        queue.push({
+          text: `隨身裝備提醒：您目前尚有 ${unchecked.length} 項物品尚未準備，現在為您逐一核對：`,
+          el: $('#cardChecklist')
+        });
+
+        unchecked.forEach(item => {
+          const cardEl = $(`#check-item-${item.id}`);
+          queue.push({
+            text: `${item.name}。用途說明：${item.desc}`,
+            el: cardEl
+          });
+        });
+      }
+
+      playSpeechQueue(queue, '行李核對清單');
+    };
+
+    renderChecklist();
+
+    // Fee Calculator
+    function cost() {
+      const n = Math.max(0, Math.floor(+$('#nm').value || 0));
+      const f = Math.max(0, Math.floor(+$('#nf').value || 0));
+      const tot = n * 3000 + f * 7000;
+      $('#total').textContent = '應繳總金額：NT$ ' + tot.toLocaleString('zh-TW') + ' 元';
+    }
+    $('#nm').oninput = $('#nf').oninput = cost;
+    cost();
+
+    $('#costChart').innerHTML = `
+      <text x="10" y="32" font-size="13" font-weight="700" fill="#213441">會員本人</text>
+      <rect x="80" y="10" width="180" height="32" rx="6" fill="#1565c0"></rect>
+      <text x="275" y="32" font-size="13" font-weight="700" fill="#1565c0">$3,000 元/人</text>
+      <text x="10" y="85" font-size="13" font-weight="700" fill="#213441">隨行家屬</text>
+      <rect x="80" y="65" width="420" height="32" rx="6" fill="#ad4500"></rect>
+      <text x="510" y="87" font-size="13" font-weight="700" fill="#ad4500">$7,000 元/人</text>
+    `;
+
+    // Window Resize Handling
+    let resizeTimer;
+    addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        Object.values(views).forEach(v => v.visible() && v.map && v.resize());
+      }, 150);
+    });
+
+    // Startup Initialization
+    renderBars();
+    render();
+    const initialPage = allPages.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'overview';
+    go(initialPage);
+  </script>
+</body>
+</html>
